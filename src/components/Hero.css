@@ -170,23 +170,6 @@
         background-attachment: scroll;
         background-position: center;
     }
-
-    .hero-name {
-        font-size: 3.5rem;
-        /* Smaller for mobile */
-    }
-
-    .hero-ampersand {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        display: none;
-    }
-
-    .hero-footer-text {
-        bottom: 2rem;
-    }
 }
 
 .hero-footer-text {

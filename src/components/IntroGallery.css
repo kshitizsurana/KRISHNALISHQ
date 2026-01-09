@@ -73,18 +73,21 @@
 
 @media (max-width: 900px) {
     .gallery-stack {
-        height: auto;
-        flex-direction: column;
-        padding: 2rem 0;
-        gap: 2rem;
+        transform: scale(0.6);
+        /* Scale down for mobile */
+        height: 400px;
+        /* Reduced height to account for scale */
+        margin: -2rem auto;
     }
 
-    .stack-card {
-        position: relative;
-        transform: none !important;
-        /* Disable overlap on mobile */
-        width: 90%;
-        max-width: 350px;
-        height: 450px;
+
+}
+
+@media (max-width: 480px) {
+    .gallery-stack {
+        transform: scale(0.4);
+        /* Scale down even further for small phones */
+        height: 300px;
+        margin: -4rem auto;
     }
 }

@@ -42,7 +42,8 @@
 }
 
 .footer-names {
-    font-size: 5rem;
+    font-size: clamp(3rem, 12vw, 5.5rem);
+    /* Proportional scaling */
     margin-bottom: 2rem;
     color: #FFB7C5;
     /* Pastel Pink */
@@ -84,7 +85,7 @@
 }
 
 .timer-value {
-    font-size: 4rem;
+    font-size: clamp(2rem, 10vw, 4.5rem);
     font-weight: 700;
     line-height: 1;
     margin-bottom: 0.5rem;
@@ -124,22 +125,7 @@
 }
 
 @media (max-width: 768px) {
-    .footer-names {
-        font-size: 3rem;
-    }
-
-    .footer-message {
-        font-size: 1.1rem;
-        margin-bottom: 3rem;
-    }
-
-    .countdown-timer {
-        gap: 1rem;
-    }
-
-    .timer-value {
-        font-size: 2.5rem;
-    }
+    /* Removing hard overrides to keep layout identical */
 
     .timer-separator {
         font-size: 2rem;

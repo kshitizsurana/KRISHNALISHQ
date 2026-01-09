@@ -196,65 +196,24 @@
 }
 
 @media (max-width: 768px) {
-    /* On mobile, fallback to vertical stack or simpler condensed circle?
-     A full radial layout is hard on narrow screens.
-     Let's switch to a vertical layout or a smaller "wheel" that overflows?
-     Better to stack for usability. */
-
     .circular-timeline-container {
-        height: auto;
-        width: 100%;
-        flex-direction: column;
-        padding-bottom: 4rem;
+        transform: scale(0.45);
+        /* Scale the whole circular UI down */
+        margin-top: -10rem;
+        margin-bottom: -10rem;
+        height: 800px;
+        /* Keep defined height for the scale transform origin */
     }
 
-    /* Disable rings and absolute positioning for mobile */
-    .circle-ripple,
-    .orbit-container,
-    .center-stage {
-        position: static;
-        transform: none;
-        border: none;
-        animation: none;
+    .timeline-section {
+        min-height: 600px;
+        padding: 4rem 0;
     }
+}
 
-    .circle-ripple {
-        display: none;
-    }
-
-    /* Hide rings */
-
-    .center-stage {
-        width: 150px;
-        height: 150px;
-        margin: 0 auto 3rem;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .orbit-container {
-        position: static;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-    }
-
-    .orbit-item {
-        position: static;
-        transform: none;
-        /* Reset rotation */
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        text-align: left;
-    }
-
-    .orbit-content {
-        align-items: flex-start;
-    }
-
-    .orbit-number-box {
-        margin-bottom: 0;
+@media (max-width: 480px) {
+    .circular-timeline-container {
+        transform: scale(0.38);
+        /* Even smaller for tiny screens */
     }
 }
