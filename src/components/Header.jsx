@@ -27,7 +27,7 @@ function Header({ scrollProgress }) {
         <header className={`header ${isScrolled ? 'scrolled' : ''} `}>
             <div className="header-container">
                 <div className="header-logo">
-                    <span className="logo-text">KI</span>
+                    <img src="/logo.png" alt="Krishna & Ishika" className="logo-img" />
                 </div>
 
                 <div className="header-right">
