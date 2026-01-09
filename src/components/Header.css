@@ -35,13 +35,25 @@
 }
 
 .logo-img {
-    height: 60px;
+    height: 50px;
     width: auto;
     transition: all 0.3s ease;
 }
 
 .header.scrolled .logo-img {
     filter: invert(1);
+}
+
+.header-hashtag {
+    height: 28px;
+    width: auto;
+    margin-left: 1.2rem;
+    transition: all 0.3s ease;
+    filter: invert(1);
+}
+
+.header.scrolled .header-hashtag {
+    filter: none;
 }
 
 .logo-text {
@@ -95,16 +107,16 @@
 
 .scroll-indicator {
     font-family: var(--font-sans);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 500;
     color: inherit;
-    min-width: 50px;
     text-align: right;
+    min-width: 45px;
+    letter-spacing: 1px;
 }
 
 .scroll-percent {
     display: inline-block;
-    transition: transform 0.2s ease;
 }
 
 .mobile-menu-btn {

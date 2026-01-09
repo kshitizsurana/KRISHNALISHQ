@@ -37,7 +37,7 @@ function Footer() {
             </div>
 
             <div className="footer-content">
-                <h2 className="footer-names script-text">Krishna & Ishika</h2>
+                <h2 className="footer-names script-text">Ishika & Krishna</h2>
                 <p className="footer-message">We can't wait to celebrate with you</p>
 
                 <div className="countdown-container">
@@ -65,7 +65,7 @@ function Footer() {
                     </div>
                 </div>
 
-                <p className="copyright">© 2026 Krishna Weds Ishika. All Rights Reserved.</p>
+                <p className="copyright">© 2026 Ishika Weds Krishna. All Rights Reserved.</p>
             </div>
         </footer>
     );

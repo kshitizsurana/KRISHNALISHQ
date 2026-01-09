@@ -44,7 +44,8 @@
 .footer-names {
     font-size: 5rem;
     margin-bottom: 2rem;
-    color: var(--color-primary);
+    color: #FFB7C5;
+    /* Pastel Pink */
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -64,7 +65,8 @@
     letter-spacing: 4px;
     margin-bottom: 2rem;
     text-transform: uppercase;
-    color: var(--color-primary);
+    color: #FFB7C5;
+    /* Pastel Pink */
 }
 
 .countdown-timer {
@@ -110,6 +112,15 @@
     font-size: 0.8rem;
     opacity: 0.5;
     letter-spacing: 1px;
+}
+
+.footer-hashtag {
+    height: 70px;
+    width: auto;
+    margin-bottom: 2rem;
+    filter: invert(0.7) sepia(1) saturate(2) hue-rotate(315deg) brightness(1.1);
+    /* Pastel Pink Tint */
+    opacity: 0.9;
 }
 
 @media (max-width: 768px) {

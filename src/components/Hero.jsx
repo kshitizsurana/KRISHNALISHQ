@@ -6,15 +6,15 @@ function Hero() {
             <div className="hero-overlay"></div>
             <div className="hero-content">
                 <h1 className="hero-names">
-                    <span className="script-text hero-name">Krishna</span>
-                    <span className="hero-ampersand">&</span>
                     <span className="script-text hero-name">Ishika</span>
+                    <span className="hero-ampersand">&</span>
+                    <span className="script-text hero-name">Krishna</span>
                 </h1>
-                <p className="hero-subtitle">Join us in celebrating our special day</p>
-                <div className="hero-scroll">
-                    <span>Scroll to explore</span>
-                    <div className="scroll-arrow">↓</div>
-                </div>
+            </div>
+
+            <div className="hero-footer-text">
+                <p className="married-text">we're getting married!!</p>
+                <p className="married-date">10/02/26</p>
             </div>
         </section>
     );

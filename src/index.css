@@ -6,7 +6,7 @@
 
 :root {
   --color-primary: #BFFF00;
-  --color-bg: #F2F2F2;
+  --color-bg: #FDFBF7;
   --color-white: #FFFFFF;
   --color-text: #1a1a1a;
   --color-text-light: #666666;
@@ -36,7 +36,12 @@ body {
   padding: 0 2rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 600;
 }
@@ -63,12 +68,12 @@ h1, h2, h3, h4, h5, h6 {
   .section {
     padding: 60px 0;
   }
-  
+
   .section-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-  
+
   .container {
     padding: 0 1rem;
   }

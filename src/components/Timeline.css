@@ -1,215 +1,260 @@
 .timeline-section {
-    padding: 0;
-    background-color: var(--color-primary);
-    color: var(--color-text);
+    background-color: #FFF0F5;
+    /* Lavender Blush / Pastel Pink */
+    padding: 6rem 0;
     overflow: hidden;
-}
-
-.timeline-bg {
-    padding: 100px 0;
-    background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
-}
-
-.timeline-title {
-    color: var(--color-text);
-    margin-bottom: 5rem;
-}
-
-.timeline-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 4rem;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
     align-items: center;
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
-.timeline-graphic {
+.circular-timeline-container {
+    position: relative;
+    width: 800px;
+    height: 800px;
+    margin: 4rem auto 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: rotateIn 2s ease-out;
 }
 
-.timeline-circle {
+/* Concentric Ripples */
+.circle-ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.c1 {
     width: 300px;
     height: 300px;
-    color: var(--color-text);
+    animation: rippleFlow 4s infinite linear;
+    border-color: rgba(160, 100, 100, 0.4);
 }
 
-.timeline-circle circle {
-    transform-origin: center;
-    animation: spin 20s linear infinite;
+.c2 {
+    width: 300px;
+    height: 300px;
+    animation: rippleFlow 4s infinite linear;
+    animation-delay: 1.3s;
+    border-color: rgba(160, 100, 100, 0.3);
 }
 
-.timeline-circle circle:nth-child(2) {
-    animation-direction: reverse;
-    animation-duration: 15s;
+.c3 {
+    width: 300px;
+    height: 300px;
+    animation: rippleFlow 4s infinite linear;
+    animation-delay: 2.6s;
+    border-color: rgba(160, 100, 100, 0.2);
 }
 
-.timeline-list {
+@keyframes rippleFlow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+        border-width: 1px;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(3.5);
+        /* Expands way out */
+        opacity: 0;
+        border-width: 0px;
+    }
+}
+
+/* Center Image */
+.center-stage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+}
+
+.center-image-wrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.center-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Orbit Items */
+.orbit-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+}
+
+.orbit-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Magic formula for keeping item upright while orbiting */
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1));
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    pointer-events: auto;
+    transition: transform 0.3s ease;
 }
 
-.timeline-item {
+.orbit-item:hover {
+    z-index: 20;
+    /* Scale effect on hover not easily combined with complex transform, 
+     so we target children instead or use a wrapper if needed. */
+}
+
+.orbit-number-box {
+    background: #000;
+    color: #fff;
+    width: 30px;
+    height: 30px;
     display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    animation: slideInRight 0.8s ease-out;
-    animation-fill-mode: both;
-}
-
-.timeline-item:last-child {
-    border-bottom: none;
-}
-
-.timeline-item:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.timeline-item:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.timeline-item:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.timeline-item:nth-child(4) {
-    animation-delay: 0.4s;
-}
-
-.timeline-item:nth-child(5) {
-    animation-delay: 0.5s;
-}
-
-.timeline-item:nth-child(6) {
-    animation-delay: 0.6s;
-}
-
-.timeline-item:nth-child(7) {
-    animation-delay: 0.7s;
-}
-
-.timeline-time {
-    font-family: var(--font-sans);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
     font-weight: 700;
-    font-size: 1.1rem;
-    min-width: 120px;
-    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.orbit-content {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    align-items: center;
 }
 
-.timeline-day {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.orbit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.2;
 }
 
-.timeline-hour {
-    font-size: 1.2rem;
+.orbit-time {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 0.25rem;
 }
 
-.timeline-details {
-    flex: 1;
-}
-
-.timeline-event {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-}
-
-.timeline-desc {
-    font-size: 1rem;
-    color: #333;
-    line-height: 1.6;
-}
-
-@keyframes rotateIn {
-    from {
-        transform: rotate(-180deg) scale(0.5);
-        opacity: 0;
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .circular-timeline-container {
+        width: 600px;
+        height: 600px;
+        margin-top: 2rem;
     }
 
-    to {
-        transform: rotate(0) scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
+    .c1 {
+        width: 300px;
+        height: 300px;
     }
 
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
+    .c2 {
+        width: 450px;
+        height: 450px;
     }
 
-    to {
-        transform: translateX(0);
-        opacity: 1;
+    .c3 {
+        width: 600px;
+        height: 600px;
+    }
+
+    .center-stage {
+        width: 180px;
+        height: 180px;
     }
 }
 
 @media (max-width: 768px) {
-    .timeline-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    /* On mobile, fallback to vertical stack or simpler condensed circle?
+     A full radial layout is hard on narrow screens.
+     Let's switch to a vertical layout or a smaller "wheel" that overflows?
+     Better to stack for usability. */
+
+    .circular-timeline-container {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        padding-bottom: 4rem;
     }
 
-    .timeline-graphic {
-        order: -1;
-        margin-bottom: 2rem;
+    /* Disable rings and absolute positioning for mobile */
+    .circle-ripple,
+    .orbit-container,
+    .center-stage {
+        position: static;
+        transform: none;
+        border: none;
+        animation: none;
     }
 
-    .timeline-circle {
+    .circle-ripple {
+        display: none;
+    }
+
+    /* Hide rings */
+
+    .center-stage {
         width: 150px;
         height: 150px;
+        margin: 0 auto 3rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .timeline-item {
+    .orbit-container {
+        position: static;
+        display: flex;
         flex-direction: column;
-        gap: 0.5rem;
-        text-align: left;
-        align-items: flex-start;
-        padding-left: 1rem;
-        border-left: 2px solid rgba(0, 0, 0, 0.1);
-        border-bottom: none;
-        padding-bottom: 2rem;
-    }
-
-    .timeline-time {
-        min-width: auto;
-        text-align: left;
-        flex-direction: row;
+        gap: 2rem;
         align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
     }
 
-    .timeline-day {
-        background: var(--color-text);
-        color: var(--color-primary);
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.8rem;
+    .orbit-item {
+        position: static;
+        transform: none;
+        /* Reset rotation */
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        text-align: left;
+    }
+
+    .orbit-content {
+        align-items: flex-start;
+    }
+
+    .orbit-number-box {
+        margin-bottom: 0;
     }
 }

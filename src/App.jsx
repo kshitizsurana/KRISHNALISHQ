@@ -11,6 +11,7 @@ import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 
 import LoadingScreen from './components/LoadingScreen';
+import IntroGallery from './components/IntroGallery'; // Import IntroGallery
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -37,6 +38,7 @@ function App() {
     <div className="app">
       <Header scrollProgress={scrollProgress} />
       <Hero />
+      <IntroGallery /> {/* Added IntroGallery here */}
       <div id="couple"><Couple /></div>
       <div id="story"><OurStory /></div>
       <div id="events"><Events /></div>

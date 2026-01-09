@@ -2,11 +2,19 @@
     position: relative;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        url('/hero_couple_image_1767951802311.png') center/cover no-repeat;
-    background-attachment: fixed;
+    justify-content: flex-start;
+    /* Move names to top area */
+    padding-top: 12vh;
+    /* Moved names higher up */
+    /* Moved names up slightly */
+    background: url('/hero_banner_final.jpg') center center/cover no-repeat;
+    background-color: var(--color-bg);
+    overflow: hidden;
+    /* Fill gaps with theme color */
+    /* Focus on faces usually at top */
+    /* Fixed often causes issues with full image visibility on mobile */
 }
 
 .hero-overlay {
@@ -15,37 +23,53 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+    background: rgba(0, 0, 0, 0.15);
+    /* Much lighter overlay */
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     text-align: center;
     color: var(--color-white);
     animation: fadeInUp 1.2s ease-out;
+    width: 100%;
 }
 
 .hero-names {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.8rem;
+    /* Closer like reference */
+    width: 100%;
+    /* Massive shift up like reference */
 }
 
 .hero-name {
-    font-size: 6rem;
-    color: var(--color-primary);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInScale 1s ease-out;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4rem, 12vw, 8rem);
+    /* Decreased size */
+    color: #FFF0F5;
+    /* Very Light Pastel Pink */
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.15);
+    font-weight: 400;
+    line-height: 0.8;
+    /* Slightly adjusted for smaller size */
+    transform: rotate(-2deg);
 }
 
 .hero-ampersand {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    color: var(--color-white);
-    margin: 0.5rem 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    /* Decreased size */
+    color: #FFF0F5;
+    /* Very Light Pastel Pink */
+    margin: 0;
+    opacity: 0.9;
+    line-height: 1;
 }
 
 .hero-subtitle {
@@ -130,6 +154,17 @@
     }
 }
 
+.hero-hashtag {
+    height: 80px;
+    /* Prominent size */
+    width: auto;
+    margin: -1rem 0 2rem;
+    filter: invert(1);
+    /* White looks classy on photos */
+    opacity: 0.9;
+    animation: fadeIn 2s ease-out;
+}
+
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll;
@@ -137,7 +172,8 @@
     }
 
     .hero-name {
-        font-size: clamp(3rem, 12vw, 4rem);
+        font-size: 3.5rem;
+        /* Smaller for mobile */
     }
 
     .hero-ampersand {
@@ -145,9 +181,46 @@
     }
 
     .hero-subtitle {
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        padding: 0 1rem;
-        line-height: 1.5;
+        display: none;
     }
+
+    .hero-footer-text {
+        bottom: 2rem;
+    }
+}
+
+.hero-footer-text {
+    position: absolute;
+    bottom: 0.5rem;
+    /* Pushed to the very bottom */
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for legibility */
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.married-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    /* Increased size */
+    margin: 0;
+    line-height: 1;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+.married-date {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    /* Increased size even more for importance */
+    margin: 0;
+    line-height: 1;
+    color: #ffffff;
 }
