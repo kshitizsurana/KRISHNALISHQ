@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const IntroGallery = () => {
     const sectionRef = useRef(null);
-    const cardsRef = useRef([]);
+
 
     useEffect(() => {
         const ctx = gsap.context(() => {

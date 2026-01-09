@@ -42,9 +42,7 @@
     transform: scale(1.05);
 }
 
-.couple-name {
-    /* Standardized by global H3 style */
-}
+
 
 .couple-card:hover .couple-name {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -77,7 +75,7 @@
     }
 
     .couple-description {
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         line-height: 1.7;
         padding: 0 5vw;
         max-width: none;

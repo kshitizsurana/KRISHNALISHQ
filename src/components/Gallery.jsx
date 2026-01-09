@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Gallery.css';
@@ -24,6 +24,20 @@ function Gallery() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Title Animation
+            gsap.fromTo(".section-title",
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: ".section-title",
+                        start: "top 85%"
+                    }
+                }
+            );
+
             gsap.fromTo(".gallery-item",
                 {
                     opacity: 0,
@@ -49,12 +63,7 @@ function Gallery() {
 
     return (
         <section className="gallery section" id="gallery" ref={sectionRef}>
-            <motion.h2
-                className="section-title"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-            >Picture Perfect Moments</motion.h2>
+            <h2 className="section-title">Picture Perfect Moments</h2>
 
             <div className="gallery-grid-exact" ref={gridRef}>
                 {images.map((img, index) => (
@@ -71,26 +80,18 @@ function Gallery() {
                 ))}
             </div>
 
-            <AnimatePresence>
-                {selectedImage && (
-                    <motion.div
-                        className="lightbox"
-                        onClick={() => setSelectedImage(null)}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                    >
-                        <button className="close-btn">&times;</button>
-                        <motion.img
-                            src={selectedImage}
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            {selectedImage && (
+                <div
+                    className="lightbox"
+                    onClick={() => setSelectedImage(null)}
+                >
+                    <button className="close-btn">&times;</button>
+                    <img
+                        src={selectedImage}
+                        alt="Enlarged moment"
+                    />
+                </div>
+            )}
         </section>
     );
 }

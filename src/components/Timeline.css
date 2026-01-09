@@ -29,7 +29,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-primary);
     border-radius: 50%;
     pointer-events: none;
     opacity: 0;
@@ -49,32 +49,32 @@
 }
 
 .c1 {
-    border-color: rgba(0, 0, 0, 0.4);
+    border-color: var(--color-primary);
 }
 
 .c2 {
     animation-delay: 0.4s;
-    border-color: rgba(0, 0, 0, 0.35);
+    border-color: var(--color-primary);
 }
 
 .c3 {
     animation-delay: 0.8s;
-    border-color: rgba(0, 0, 0, 0.3);
+    border-color: var(--color-primary);
 }
 
 .c4 {
     animation-delay: 1.2s;
-    border-color: rgba(0, 0, 0, 0.25);
+    border-color: var(--color-primary);
 }
 
 .c5 {
     animation-delay: 1.6s;
-    border-color: rgba(0, 0, 0, 0.2);
+    border-color: var(--color-primary);
 }
 
 .c6 {
     animation-delay: 2.0s;
-    border-color: rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary);
 }
 
 
@@ -210,7 +210,7 @@
 }
 
 .orbit-number-box {
-    background: #000;
+    background: var(--color-primary);
     color: #fff;
     width: 40px;
     height: 40px;
@@ -218,7 +218,7 @@
     justify-content: center;
     align-items: center;
     font-family: var(--font-serif);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
     /* Corrected from 5rem to keep text grouped */
@@ -232,10 +232,10 @@
 
 .orbit-title {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 2.2rem;
     /* Scaled for a cleaner, non-overlapping look */
     font-weight: 700;
-    color: #000;
+    color: var(--color-text);
     margin: 0;
     line-height: 1.1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -243,9 +243,9 @@
 
 .orbit-time {
     font-family: var(--font-serif);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     /* Proportionally adjusted */
-    color: #000;
+    color: var(--color-text);
     margin-top: 0.5rem;
     font-weight: 500;
 }
@@ -297,6 +297,6 @@
     }
 
     .orbit-title {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 }

@@ -4,11 +4,14 @@
     overflow: hidden;
 }
 
+.our-story.couple {
+    background: var(--color-bg);
+}
+
 .our-story.events {
-    background-color: #FFFFFF;
+    background-color: var(--color-bg);
     padding: 2rem 0 0 0;
-    /* Reduced top padding */
-    color: #000000;
+    color: var(--color-text);
 }
 
 .story-timeline {
@@ -19,7 +22,7 @@
 }
 
 .gallery {
-    background: #ffffff;
+    background: var(--color-bg);
     padding: 0 0 2rem 0;
 }
 

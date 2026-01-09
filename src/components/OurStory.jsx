@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+
 import './OurStory.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +12,21 @@ function OurStory() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Title Animation
+            gsap.fromTo(".section-title",
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: ".section-title",
+                        start: "top 85%"
+                    }
+                }
+            );
+
             if (lineRef.current) {
                 const pathLength = lineRef.current.getTotalLength();
 
@@ -104,13 +119,7 @@ function OurStory() {
     return (
         <section className="our-story section" id="story" ref={storyRef}>
             <div className="container">
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >Our Story</motion.h2>
+                <h2 className="section-title">Our Story</h2>
 
                 <div className="story-timeline">
                     <svg className="flowing-line" viewBox="0 0 100 2000" preserveAspectRatio="none">

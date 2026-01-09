@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Footer.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Footer() {
     const [timeLeft, setTimeLeft] = useState({
@@ -9,6 +12,8 @@ function Footer() {
         minutes: 0,
         seconds: 0
     });
+
+    const footerRef = useRef(null);
 
     useEffect(() => {
         const weddingDate = new Date('2026-02-10T11:00:00');
@@ -30,43 +35,54 @@ function Footer() {
         return () => clearInterval(timer);
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.2 }
-        }
-    };
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Footer image scale animation
+            gsap.fromTo(".footer-image-overlay",
+                { scale: 1.1 },
+                {
+                    scale: 1,
+                    duration: 3,
+                    scrollTrigger: {
+                        trigger: ".footer",
+                        start: "top bottom"
+                    }
+                }
+            );
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
+            // Stagger content animation
+            gsap.fromTo([".footer-names", ".countdown-section-aesthetic", ".footer-message", ".copyright"],
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: ".footer-content",
+                        start: "top 85%"
+                    }
+                }
+            );
+        }, footerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <footer className="footer">
-            <motion.div
-                className="footer-image-overlay"
-                initial={{ scale: 1.1 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 3 }}
-            >
+        <footer className="footer" ref={footerRef}>
+            <div className="footer-image-overlay">
                 <img src="/hero_couple_image_1767951802311.png" alt="Couple" className="footer-bg" />
                 <div className="footer-overlay"></div>
-            </motion.div>
+            </div>
 
-            <motion.div
-                className="footer-content"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={containerVariants}
-            >
-                <motion.h2 className="footer-names script-text" variants={itemVariants}>
+            <div className="footer-content">
+                <h2 className="footer-names script-text">
                     Ishika & Krishna
-                </motion.h2>
+                </h2>
 
-                <motion.div className="countdown-section-aesthetic" variants={itemVariants}>
+                <div className="countdown-section-aesthetic">
                     <p className="countdown-top-label">MISSING DAYS TO</p>
                     <h2 className="footer-wedding-title script-text">
                         Our Wedding
@@ -90,16 +106,16 @@ function Footer() {
                             <span className="timer-label">SECONDS</span>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
-                <motion.p className="footer-message" variants={itemVariants}>
+                <p className="footer-message">
                     We can't wait to celebrate with you
-                </motion.p>
+                </p>
 
-                <motion.p className="copyright" variants={itemVariants}>
+                <p className="copyright">
                     {/* © 2026 Ishika Weds Krishna. All Rights Reserved. */}
-                </motion.p>
-            </motion.div>
+                </p>
+            </div>
         </footer>
     );
 }

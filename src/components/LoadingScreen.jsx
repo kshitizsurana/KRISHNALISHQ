@@ -23,7 +23,8 @@ const LoadingScreen = ({ onComplete }) => {
                 <div className="heart">♡</div>
                 <div className="heart">♡</div>
             </div>
-            <h1 className="loading-text">Welcome to Our Wedding</h1>
+            <h1 className="loading-names">Welcome to our Wedding</h1>
+            {/* <p className="loading-subtitle">We're getting married!</p> */}
         </div>
     );
 };

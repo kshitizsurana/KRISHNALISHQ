@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Couple.css';
@@ -12,6 +12,20 @@ function Couple() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Animate section title
+            gsap.fromTo(".section-title",
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: ".section-title",
+                        start: "top 85%"
+                    }
+                }
+            );
+
             cardsRef.current.forEach((card, i) => {
                 if (!card) return;
 
@@ -62,13 +76,7 @@ function Couple() {
     return (
         <section className="couple section" id="couple" ref={sectionRef}>
             <div className="container" style={{ perspective: "1000px" }}>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >The Couple</motion.h2>
+                <h2 className="section-title">The Couple</h2>
 
                 <div className="couple-grid">
                     <div

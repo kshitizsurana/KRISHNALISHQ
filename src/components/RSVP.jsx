@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './RSVP.css';
 
 function RSVP() {
@@ -17,32 +18,55 @@ function RSVP() {
         setFormData({ name: '', email: '', guests: '1', message: '' });
     };
 
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
+        const ctx = gsap.context(() => {
+            gsap.fromTo(".rsvp-card",
+                { opacity: 0, scale: 0.95 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: ".rsvp-card",
+                        start: "top 85%"
+                    }
+                }
+            );
+
+            gsap.fromTo([".form-group", ".submit-btn"],
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.1,
+                    scrollTrigger: {
+                        trigger: ".rsvp-form",
+                        start: "top 85%"
+                    }
+                }
+            );
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="rsvp section" id="rsvp">
+        <section className="rsvp section" id="rsvp" ref={sectionRef}>
             <div className="container">
-                <motion.div
-                    className="rsvp-card"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
+                <div className="rsvp-card">
                     <div className="rsvp-header">
                         <span className="rsvp-ornament">✧</span>
-                        <h2 className="rsvp-main-title">CONFIRMATION AT WEDDING</h2>
+                        <h2 className="rsvp-main-title">Confirmation At Wedding</h2>
                         <p className="rsvp-subtitle">
                             It would be our greatest honor to have you with us as we begin our new journey. Please kindly confirm your presence below.
                         </p>
                     </div>
 
                     <form className="rsvp-form" onSubmit={handleSubmit}>
-                        <motion.div
-                            className="form-group"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        >
+                        <div className="form-group">
                             <label htmlFor="name">Full Name</label>
                             <input
                                 type="text"
@@ -51,15 +75,9 @@ function RSVP() {
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 required
                             />
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            className="form-group"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                        >
+                        <div className="form-group">
                             <label htmlFor="email">Email Address</label>
                             <input
                                 type="email"
@@ -68,15 +86,9 @@ function RSVP() {
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 required
                             />
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            className="form-group"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                        >
+                        <div className="form-group">
                             <label htmlFor="message">Message for the Couple</label>
                             <textarea
                                 id="message"
@@ -84,18 +96,16 @@ function RSVP() {
                                 value={formData.message}
                                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             ></textarea>
-                        </motion.div>
+                        </div>
 
-                        <motion.button
+                        <button
                             type="submit"
                             className="submit-btn"
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
                         >
                             SUBMIT
-                        </motion.button>
+                        </button>
                     </form>
-                </motion.div>
+                </div>
             </div>
         </section>
     );

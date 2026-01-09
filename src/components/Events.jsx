@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Events.css';
@@ -59,6 +59,21 @@ function Events() {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Header animation
+            gsap.fromTo(".section-header-styled",
+                { opacity: 0, scale: 0.8 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    duration: 1.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: ".section-header-styled",
+                        start: "top 80%"
+                    }
+                }
+            );
+
             // Staggered reveal for cards with scale and rotation
             gsap.fromTo(".event-card",
                 {
@@ -102,19 +117,13 @@ function Events() {
     return (
         <section className="events section" id="events" ref={sectionRef}>
             <div className="container">
-                <motion.div
-                    className="section-header-styled"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                >
+                <div className="section-header-styled">
                     <img src="/logo.png" alt="Logo" className="section-logo" />
                     <div className="divider-line"></div>
                     <h2 className="section-title-serif">Events Schedule</h2>
                     <div className="divider-line"></div>
                     <span className="section-hashtag accent-text">#KrishNalIshq</span>
-                </motion.div>
+                </div>
 
                 <div className="events-grid" ref={gridRef} style={{ perspective: "1500px" }}>
                     {events.map((event, index) => (

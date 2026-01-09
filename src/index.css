@@ -5,16 +5,21 @@
 }
 
 :root {
-  --color-primary: #000000;
-  --color-bg: #FFFFFF;
+  --color-primary: #B8967D;
+  /* Muted Terracotta/Rose Gold - for buttons and accents */
+  --color-bg: #EDE8E3;
+  /* Soft Warm Beige/Taupe - main background */
   --color-white: #FFFFFF;
+  /* Pure White - for content cards */
   --color-text: #000000;
-  --color-text-light: #000000;
-  /* Unifying to the most beautiful aesthetic font: Playfair Display */
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Playfair Display', serif;
-  --font-script: 'Playfair Display', serif;
-  --font-accent: 'Playfair Display', serif;
+  /* Pure Black - main text */
+  --color-text-light: #2C2C2C;
+  /* Dark Gray - secondary text */
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-accent: 'Great Vibes', cursive;
 
   /* Mobile-First Spacing Scale */
   --spacing-xs: 0.5rem;
@@ -82,18 +87,22 @@ h6 {
   margin: 0;
 }
 
-/* Global Section Titles (Main Headings) */
+/* Global Section Titles (Main Headings) - Now using the elegant Script font as seen in reference */
 h2,
 .section-title,
 .section-title-serif {
-  font-size: clamp(2rem, 5vw, 2.5rem) !important;
+  font-family: var(--font-script) !important;
+  font-size: clamp(3.5rem, 12vw, 6rem) !important;
+  /* Larger for script elegance */
   font-weight: 400 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.15em !important;
+  text-transform: none !important;
+  /* Script shouldn't be uppercase */
+  letter-spacing: normal !important;
   text-align: center !important;
+  color: var(--color-primary) !important;
+  /* Using the accent color for titles */
   margin-bottom: 2rem;
-  /* Reduced from 3rem */
-  line-height: 1.2 !important;
+  line-height: 1.1 !important;
 }
 
 /* Global Sub Headings (Event/Story Titles) */
@@ -102,12 +111,12 @@ h3,
 .story-title,
 .orbit-title,
 .couple-name {
-  font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
-  font-weight: 600 !important;
-  color: #000 !important;
+  font-family: var(--font-serif) !important;
+  font-size: clamp(1.75rem, 5vw, 2.5rem) !important;
+  font-weight: 500 !important;
+  color: var(--color-text) !important;
   margin-bottom: 0.75rem;
-  /* Softened and removed !important */
-  letter-spacing: 0.02em !important;
+  letter-spacing: 0.01em !important;
   text-transform: none !important;
 }
 
@@ -118,12 +127,14 @@ p,
 .couple-description,
 .rsvp-subtitle {
   font-family: var(--font-serif) !important;
-  font-size: 1.1rem !important;
-  line-height: 1.8 !important;
-  color: #000 !important;
-  text-align: justify !important;
-  hyphens: auto !important;
+  font-size: 1.4rem !important;
+  /* Slightly larger for Cormorant Garamond readability */
+  line-height: 1.7 !important;
+  color: var(--color-text) !important;
+  text-align: center !important;
+  /* Reference image uses mostly centered text */
   margin-bottom: 1.5rem;
+  font-weight: 400;
 }
 
 .script-text {
@@ -137,7 +148,7 @@ p,
   letter-spacing: 2px;
   font-weight: 500;
   text-transform: none;
-  font-size: 1.3rem !important;
+  font-size: 1.5rem !important;
   /* Unified size for consistent look across site */
 }
 
