@@ -4,59 +4,47 @@ import './Events.css';
 function Events() {
     const events = [
         {
-            title: 'HALDI CARNIVAL',
-            date: 'February 09, 2026 (12:00 PM)',
-            location: 'Mayur Bagh',
-            description: '“Dive into love & laughter” — A splashy start with games, colours, and carnival vibes.',
-            image: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?q=80&w=1000&auto=format&fit=crop', // Yellow/Haldi vibe
+            title: 'Under the Sea Carnival',
+            date: '09.02.2026',
+            time: '12:00 PM',
+            venue: 'Mayur Bagh, Taj Aravali Udaipur',
+            tagline: '“Dive into love & laughter”',
+            description: 'A splashy start with games, colours, and carnival vibes.',
+            dressCode: 'Pastel hues, men and women both in western attire',
+            image: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?q=80&w=1000&auto=format&fit=crop',
             mapLink: '#'
         },
         {
-            title: 'SANGEET O’CLOCK',
-            date: 'February 09, 2026 (8:00 PM)',
-            location: 'Mewar Lawn I',
-            description: '“Dance like no one’s watching” — An evening of music, moves, and Bollywood magic.',
-            image: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=1000&auto=format&fit=crop', // Vibrant/Party vibe
+            title: 'Sangeet O’Clock',
+            date: '09.02.2026',
+            time: '8:00 PM',
+            venue: 'Mewar Lawn I, Taj Aravali Udaipur',
+            tagline: '“Dance like no one’s watching”',
+            description: 'An evening of music, moves, and Bollywood magic.',
+            dressCode: 'Glitz and glam, men in black tuxedo and women in white/beige/silver shimmer attire',
+            image: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=1000&auto=format&fit=crop',
             mapLink: '#'
         },
         {
-            title: 'GUD CHADI',
-            date: 'February 10, 2026 (9:00 AM)',
-            location: 'Mewar Lawn II',
-            description: '“The groom rides in” — Mehndi laga ke rakhna, doli sajakr rakhna!',
-            image: 'https://images.unsplash.com/photo-1588656828591-64d84f937d57?q=80&w=1000&auto=format&fit=crop', // Horse/Groom
+            title: 'Agnisakshi: Our Forever Begins',
+            date: '10.02.2026',
+            time: '12:00 PM',
+            venue: 'Amphitheater Lawn, Taj Aravali, Udaipur',
+            tagline: '“Eternal Seven Vows”',
+            description: 'Sacred fire, eternal promises, and hearts intertwined.',
+            dressCode: 'Traditional, men in kurta pajama with jacket and women in silk saree or lehnga for our pure mandir',
+            image: 'https://images.unsplash.com/photo-1583934555026-17a111400030?q=80&w=1000&auto=format&fit=crop',
             mapLink: '#'
         },
         {
-            title: 'AGNISAKSHI (PHERE)',
-            date: 'February 10, 2026 (12:00 PM)',
-            location: 'Amphitheater Lawn',
-            description: '“Eternal Seven Vows” — Sacred fire, eternal promises, and hearts intertwined.',
-            image: 'https://images.unsplash.com/photo-1583934555026-17a111400030?q=80&w=1000&auto=format&fit=crop', // Fire/Wedding
-            mapLink: '#'
-        },
-        {
-            title: 'SHAAN-E-PAGDI',
-            date: 'February 10, 2026 (6:30 PM)',
-            location: 'Mewar Lawn II',
-            description: '“Jijas in Action” — The jijas tie the safa and get the groom ready.',
-            image: 'https://images.unsplash.com/photo-1623945238260-1557022d480e?q=80&w=1000&auto=format&fit=crop', // Turban/Prep
-            mapLink: '#'
-        },
-        {
-            title: 'BEATS & BARAAT',
-            date: 'February 10, 2026 (7:00 PM)',
-            location: 'Mewar Lawn II',
-            description: '“Bhabhi steals the show” — Dhol, dance, and the grand procession.',
-            image: 'https://images.unsplash.com/photo-1605218427306-635ba2439715?q=80&w=1000&auto=format&fit=crop', // Baraat/Dance
-            mapLink: '#'
-        },
-        {
-            title: 'WEDDING & RECEPTION',
-            date: 'February 10, 2026 (8:00 PM)',
-            location: 'Aravali Lawn',
-            description: '“Mangalam Milanam” — A majestic finale filled with love and family blessings.',
-            image: 'https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=1000&auto=format&fit=crop', // Night/Decor
+            title: 'Mangalam Milanam',
+            date: '10.02.2026',
+            time: '8:00 PM',
+            venue: 'Aravali Lawn, Taj Aravali, Udaipur',
+            tagline: '“Two families, one grand celebration”',
+            description: 'A majestic finale filled with love, laughter, and family blessings.',
+            dressCode: 'Indian traditional, men in jodhpuri, achkan, bandgala and suit and women in lehnga and saree.',
+            image: 'https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=1000&auto=format&fit=crop',
             mapLink: '#'
         }
     ];
@@ -76,34 +64,34 @@ function Events() {
                         <div key={index} className="event-card">
                             <div className="event-image">
                                 <img src={event.image} alt={event.title} loading="lazy" />
+                                <div className="event-date-overlay">
+                                    <span>{event.date}</span>
+                                </div>
                             </div>
                             <div className="event-content">
                                 <h3 className="event-title">{event.title}</h3>
-
+                                {event.tagline && <p className="event-tagline">{event.tagline}</p>}
                                 <div className="event-meta">
                                     <div className="meta-item">
-                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                                        </svg>
-                                        <span>{event.location}</span>
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                        <span>{event.venue}</span>
                                     </div>
                                     <div className="meta-item">
-                                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8 8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
-                                        </svg>
-                                        <span>{event.date}</span>
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                        <span>{event.time}</span>
                                     </div>
+                                    {event.dressCode && (
+                                        <div className="meta-item dress-code">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.62 1.96v11.16a2 2 0 0 0 1.62 1.96L8 21a4 4 0 0 0 8 0l4.38-1.46a2 2 0 0 0 1.62-1.96V5.42a2 2 0 0 0-1.62-1.96z"></path></svg>
+                                            <span><strong>Dress Code:</strong> {event.dressCode}</span>
+                                        </div>
+                                    )}
                                 </div>
-
                                 <p className="event-description">{event.description}</p>
-
                                 <a href={event.mapLink} className="view-location-btn">
-                                    VIEW LOCATION
+                                    VIEW ON MAP
                                     <span className="btn-icon">
-                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                        </svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                                     </span>
                                 </a>
                             </div>

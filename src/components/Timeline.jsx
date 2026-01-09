@@ -2,13 +2,13 @@ import './Timeline.css';
 
 function Timeline() {
     const timelineEvents = [
-        { id: '01', event: 'Haldi Carnival', time: '12:00 PM', desc: 'Feb 09' },
-        { id: '02', event: 'Sangeet', time: '8:00 PM', desc: 'Feb 09' },
+        { id: '01', event: 'Under the Sea Carnival', time: '12:00 PM', desc: 'Feb 09' },
+        { id: '02', event: 'Sangeet O’Clock', time: '8:00 PM', desc: 'Feb 09' },
         { id: '03', event: 'Gud Chadi', time: '9:00 AM', desc: 'Feb 10' },
-        { id: '04', event: 'Phere', time: '12:00 PM', desc: 'Feb 10' },
-        { id: '05', event: 'Safa Bhandi', time: '6:30 PM', desc: 'Feb 10' },
-        { id: '06', event: 'Baarat', time: '7:00 PM', desc: 'Feb 10' },
-        { id: '07', event: 'Reception', time: '8:00 PM', desc: 'Feb 10' }
+        { id: '04', event: 'Agnisakshi', time: '12:00 PM', desc: 'Feb 10' },
+        { id: '05', event: 'Shaan-e-Pagdi', time: '6:30 PM', desc: 'Feb 10' },
+        { id: '06', event: 'Beats & Baraat', time: '7:00 PM', desc: 'Feb 10' },
+        { id: '07', event: 'Mangalam Milanam', time: '8:00 PM', desc: 'Feb 10' }
     ];
 
     return (

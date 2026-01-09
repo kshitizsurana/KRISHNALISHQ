@@ -41,7 +41,7 @@ function Footer() {
                 <p className="footer-message">We can't wait to celebrate with you</p>
 
                 <div className="countdown-container">
-                    <p className="countdown-label">MISSING DAYS TO OUR WEDDING</p>
+                    <p className="countdown-label">Missing Days to Wedding Timeline</p>
                     <div className="countdown-timer">
                         <div className="timer-item">
                             <span className="timer-value">{timeLeft.days}</span>

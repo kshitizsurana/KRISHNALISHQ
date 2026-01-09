@@ -28,27 +28,21 @@ function OurStory() {
     const stories = [
         {
             title: 'First Meeting',
-            date: 'January 2020',
-            description: 'Our eyes met across a crowded room, and in that moment, we both knew something special was about to begin. It was a chance encounter that would change our lives forever.',
+            date: '16 July 2025, The Lalit, Jaipur',
+            description: 'Their parents played cupid. She walked in a little nervous, he was calm. They spoke softly, laughed a little, and found comfort in the quiet pauses. Somehow, it felt right, he felt steady and familiar, she felt at home. (Soft note: one day before meeting him, she had spotted someone like him at her favourite café and got slightly ticked off, so she decided to meet him tomorrow and “say no” 😄)',
             image: '/story_meeting_1767951851794.png'
         },
         {
             title: 'First Date',
-            date: 'February 2020',
-            description: 'A simple walk in the park turned into hours of conversation and laughter. We talked about our dreams, our fears, and everything in between. Time seemed to stand still.',
+            date: 'The Verandah, Rambagh Palace',
+            description: 'She suggested, ‘Let’s go to the verandah.’ He smiled, confident he knew Jaipur like the back of his hand, yet somehow, he didn’t have the faintest idea where she meant. When she added, ‘Rambagh?’ he laughed and said, ‘Ah, of course, let’s go.’ He reached a little early, brimming with curiosity, and she kept him waiting forty minutes. At that charming place, the world seemed to fade away. Over almond coffee and sparkling water, they talked endlessly, eight hours passing as if in a heartbeat. Yet in those quiet, effortless hours, something gentle and unforgettable quietly began.',
             image: '/story_date_1767951873660.png'
         },
         {
-            title: 'The Proposal',
-            date: 'December 2022',
-            description: 'Under a sky painted with stars, he got down on one knee and asked the most important question. With tears of joy, she said yes, and our forever began.',
-            image: '/story_proposal_1767951897199.png'
-        },
-        {
             title: 'Engagement',
-            date: 'January 2023',
-            description: 'Surrounded by family and friends, we celebrated our love and commitment. The joy and blessings we received made our bond even stronger.',
-            image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800'
+            date: 'A Promise of Forever',
+            description: 'On their engagement day, the world around them seemed to blur. Mere Sohneya played softly in the background, and with every note, they fell for each other even harder. Silently, on bended knees, they whispered “partners forever”. Her smile lit up the room, his eyes sparkled like stars, and in that moment, time itself felt magical. He held her simply, lifting her heavy lehnga with ease, and in that gentle, effortless touch, their joined hands carried a promise: to always stand by each other, through every tomorrow.',
+            image: '/story_proposal_1767951897199.png'
         }
     ];
 

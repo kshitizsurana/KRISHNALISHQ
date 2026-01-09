@@ -10,9 +10,10 @@ function Couple() {
                         <div className="couple-image-wrapper">
                             <img src="/bride_portrait_1767951817922.png" alt="Ishika" className="couple-image" />
                         </div>
-                        <h3 className="couple-name script-text">Ishika</h3>
+                        <h3 className="couple-name script-text">Ishika Rajoria</h3>
                         <p className="couple-description">
-                            A beautiful soul with a heart full of love and dreams. Her grace and kindness light up every room she enters, making the world a better place.
+                            By profession a lawyer, by heart a chef.
+                            She finds joy in good food, cozy cafés, and little adventures, always better with him by her side. She’s a people’s person, but her heart melts for him. With him, life feels warmer and effortlessly happy. She’s forever cheering for him, smiling softly at his little wins.
                         </p>
                     </div>
 
@@ -20,9 +21,10 @@ function Couple() {
                         <div className="couple-image-wrapper">
                             <img src="/groom_portrait_1767951834123.png" alt="Krishna" className="couple-image" />
                         </div>
-                        <h3 className="couple-name script-text">Krishna</h3>
+                        <h3 className="couple-name script-text">Krishna Akar</h3>
                         <p className="couple-description">
-                            A gentleman with a warm smile and a generous spirit. His strength and compassion inspire everyone around him to be their best selves.
+                            A businessman driven by passion and integrity.
+                            He steps into each day with quiet ambition and clear vision. His eyes hold dreams, but shine brightest when they find hers. He finds joy in playful teasing and little spats, yet his heart bends to her wishes, always being there for her effortlessly.
                         </p>
                     </div>
                 </div>

@@ -13,7 +13,7 @@ function Hero() {
             </div>
 
             <div className="hero-footer-text">
-                <p className="married-text">we're getting married!!</p>
+                <p className="married-text">We are getting married!</p>
                 <p className="married-date">10/02/26</p>
             </div>
         </section>
