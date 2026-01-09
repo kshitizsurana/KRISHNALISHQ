@@ -30,26 +30,28 @@ function Header({ scrollProgress }) {
                     <span className="logo-text">KI</span>
                 </div>
 
-                <button
-                    className={`mobile - menu - btn ${isMenuOpen ? 'open' : ''} `}
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    aria-label="Toggle menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                <div className="header-right">
+                    <div className="scroll-indicator desktop-only">
+                        <span className="scroll-percent">{scrollProgress}%</span>
+                    </div>
 
-                <nav className={`header - nav ${isMenuOpen ? 'mobile-open' : ''} `}>
-                    <button onClick={() => scrollToSection('couple')}>The Couple</button>
-                    <button onClick={() => scrollToSection('story')}>Our Story</button>
-                    <button onClick={() => scrollToSection('events')}>Events</button>
-                    <button onClick={() => scrollToSection('gallery')}>Gallery</button>
-                    <button onClick={() => scrollToSection('rsvp')}>RSVP</button>
-                </nav>
+                    <nav className={`header-nav ${isMenuOpen ? 'mobile-open' : ''}`}>
+                        <button onClick={() => scrollToSection('couple')}>The Couple</button>
+                        <button onClick={() => scrollToSection('story')}>Our Story</button>
+                        <button onClick={() => scrollToSection('events')}>Events</button>
+                        <button onClick={() => scrollToSection('gallery')}>Photos</button>
+                        <button onClick={() => scrollToSection('rsvp')}>RSVP</button>
+                    </nav>
 
-                <div className="scroll-indicator desktop-only">
-                    <span className="scroll-percent">{scrollProgress}%</span>
+                    <button
+                        className={`mobile-menu-btn ${isMenuOpen ? 'open' : ''}`}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label="Toggle menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </header>
@@ -57,4 +59,5 @@ function Header({ scrollProgress }) {
 }
 
 export default Header;
+
 

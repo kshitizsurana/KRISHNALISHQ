@@ -7,6 +7,7 @@
     background: transparent;
     transition: all 0.3s ease;
     padding: 1.5rem 0;
+    color: var(--color-white);
 }
 
 .header.scrolled {
@@ -14,6 +15,7 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
     padding: 1rem 0;
+    color: var(--color-text);
 }
 
 .header-container {
@@ -29,7 +31,7 @@
 .header-logo {
     font-family: var(--font-script);
     font-size: 2rem;
-    color: var(--color-text);
+    color: inherit;
     z-index: 1002;
 }
 
@@ -37,25 +39,30 @@
     font-weight: 400;
 }
 
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
 .header-nav {
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 .header-nav button {
     background: none;
     border: none;
-    color: var(--color-text);
-    font-size: 0.95rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+    color: inherit;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.5rem 0;
+    font-family: var(--font-sans);
 }
 
 .header-nav button::after {
@@ -81,7 +88,7 @@
     font-family: var(--font-sans);
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: inherit;
     min-width: 50px;
     text-align: right;
 }
@@ -107,7 +114,7 @@
 .mobile-menu-btn span {
     width: 30px;
     height: 2px;
-    background: var(--color-text);
+    background: currentColor;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -132,8 +139,6 @@
         position: fixed;
         top: 0;
         right: -100%;
-        left: auto;
-        transform: none;
         width: 100%;
         height: 100vh;
         background: var(--color-bg);
@@ -143,6 +148,8 @@
         transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
         gap: 3rem;
+        color: var(--color-text);
+        /* Ensure mobile menu text is dark */
     }
 
     .header-nav.mobile-open {
@@ -152,6 +159,7 @@
     .header-nav button {
         font-size: 1.5rem;
         font-family: var(--font-serif);
+        color: var(--color-text);
     }
 
     .header-container {
@@ -168,5 +176,10 @@
 
     .desktop-only {
         display: none;
+    }
+
+    .header-right {
+        gap: 0;
+        /* Reset gap for mobile */
     }
 }
