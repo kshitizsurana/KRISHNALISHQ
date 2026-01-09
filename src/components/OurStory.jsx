@@ -124,9 +124,9 @@ function OurStory() {
                         />
                         <defs>
                             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stopColor="rgba(255, 183, 197, 0.3)" />
-                                <stop offset="50%" stopColor="rgba(255, 183, 197, 0.8)" />
-                                <stop offset="100%" stopColor="rgba(255, 183, 197, 0.3)" />
+                                <stop offset="0%" stopColor="rgba(0, 0, 0, 0.1)" />
+                                <stop offset="50%" stopColor="rgba(0, 0, 0, 0.6)" />
+                                <stop offset="100%" stopColor="rgba(0, 0, 0, 0.1)" />
                             </linearGradient>
                         </defs>
                     </svg>

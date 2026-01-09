@@ -49,28 +49,26 @@ function Gallery() {
 
     return (
         <section className="gallery section" id="gallery" ref={sectionRef}>
-            <div className="container">
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >Picture Perfect Moments</motion.h2>
+            <motion.h2
+                className="section-title"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+            >Picture Perfect Moments</motion.h2>
 
-                <div className="gallery-grid-exact" ref={gridRef}>
-                    {images.map((img, index) => (
-                        <div
-                            key={index}
-                            className={`gallery-item ${img.layout}`}
-                            onClick={() => setSelectedImage(img.src)}
-                        >
-                            <div className="gallery-overlay">
-                                <span className="view-text">Enlarge</span>
-                            </div>
-                            <img src={img.src} alt={`Gallery moment ${index + 1}`} loading="lazy" />
+            <div className="gallery-grid-exact" ref={gridRef}>
+                {images.map((img, index) => (
+                    <div
+                        key={index}
+                        className={`gallery-item ${img.layout}`}
+                        onClick={() => setSelectedImage(img.src)}
+                    >
+                        <div className="gallery-overlay">
+                            <span className="view-text">Enlarge</span>
                         </div>
-                    ))}
-                </div>
+                        <img src={img.src} alt={`Gallery moment ${index + 1}`} loading="lazy" />
+                    </div>
+                ))}
             </div>
 
             <AnimatePresence>

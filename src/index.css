@@ -5,14 +5,16 @@
 }
 
 :root {
-  --color-primary: #FFB7C5;
-  --color-bg: #FDFBF7;
+  --color-primary: #000000;
+  --color-bg: #FFFFFF;
   --color-white: #FFFFFF;
-  --color-text: #1a1a1a;
-  --color-text-light: #666666;
+  --color-text: #000000;
+  --color-text-light: #000000;
+  /* Unifying to the most beautiful aesthetic font: Playfair Display */
   --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Playfair Display', serif;
+  --font-script: 'Playfair Display', serif;
+  --font-accent: 'Playfair Display', serif;
 
   /* Mobile-First Spacing Scale */
   --spacing-xs: 0.5rem;
@@ -33,8 +35,8 @@
   --font-size-4xl: 2.5rem;
 
   /* Section Padding for Mobile */
-  --section-padding-mobile: 3rem;
-  --section-padding-desktop: 6rem;
+  --section-padding-mobile: 1.5rem;
+  --section-padding-desktop: 3rem;
 }
 
 html {
@@ -50,6 +52,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  text-align: justify;
+}
+
+p {
+  text-align: justify;
+  hyphens: auto;
 }
 
 #root {
@@ -70,26 +78,67 @@ h4,
 h5,
 h6 {
   font-family: var(--font-serif);
-  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
 }
 
-.section {
-  position: relative;
-  padding: var(--section-padding-mobile) 0;
+/* Global Section Titles (Main Headings) */
+h2,
+.section-title,
+.section-title-serif {
+  font-size: clamp(2rem, 5vw, 2.5rem) !important;
+  font-weight: 400 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  text-align: center !important;
+  margin-bottom: 2rem;
+  /* Reduced from 3rem */
+  line-height: 1.2 !important;
 }
 
-.section-title {
-  font-size: var(--font-size-3xl);
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
+/* Global Sub Headings (Event/Story Titles) */
+h3,
+.event-title,
+.story-title,
+.orbit-title,
+.couple-name {
+  font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+  font-weight: 600 !important;
+  color: #000 !important;
+  margin-bottom: 0.75rem;
+  /* Softened and removed !important */
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+}
+
+/* Global Body Text / Descriptions */
+p,
+.event-description,
+.story-description,
+.couple-description,
+.rsvp-subtitle {
+  font-family: var(--font-serif) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.8 !important;
+  color: #000 !important;
+  text-align: justify !important;
+  hyphens: auto !important;
+  margin-bottom: 1.5rem;
 }
 
 .script-text {
   font-family: var(--font-script);
   font-weight: 400;
+}
+
+.accent-text {
+  font-family: var(--font-accent);
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: 500;
+  text-transform: none;
+  font-size: 1.3rem !important;
+  /* Unified size for consistent look across site */
 }
 
 @media (max-width: 768px) {
@@ -101,20 +150,35 @@ h6 {
     padding: var(--section-padding-mobile) 0;
   }
 
-  .section-title {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-lg);
-    letter-spacing: -0.5px;
+  h2,
+  .section-title,
+  .section-title-serif {
+    font-size: 1.8rem !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 2rem;
+  }
+
+  h3,
+  .event-title,
+  .story-title,
+  .orbit-title,
+  .couple-name {
+    font-size: 1.4rem !important;
+  }
+
+  p,
+  .event-description,
+  .story-description,
+  .couple-description,
+  .rsvp-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
   }
 }
 
 @media (min-width: 769px) {
   .section {
     padding: var(--section-padding-desktop) 0;
-  }
-
-  .section-title {
-    font-size: var(--font-size-4xl);
   }
 }
 

@@ -28,7 +28,11 @@ function RSVP() {
                     transition={{ duration: 1 }}
                 >
                     <div className="rsvp-header">
+                        <span className="rsvp-ornament">✧</span>
                         <h2 className="rsvp-main-title">CONFIRMATION AT WEDDING</h2>
+                        <p className="rsvp-subtitle">
+                            It would be our greatest honor to have you with us as we begin our new journey. Please kindly confirm your presence below.
+                        </p>
                     </div>
 
                     <form className="rsvp-form" onSubmit={handleSubmit}>

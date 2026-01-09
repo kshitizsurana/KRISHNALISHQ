@@ -17,7 +17,7 @@ function Events() {
             description: 'A splashy start with games, colours, and carnival vibes.',
             dressCode: 'Pastel hues, men and women both in western attire',
             image: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?q=80&w=1000&auto=format&fit=crop',
-            mapLink: '#'
+            mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
             title: 'Sangeet O’Clock',
@@ -28,7 +28,7 @@ function Events() {
             description: 'An evening of music, moves, and Bollywood magic.',
             dressCode: 'Glitz and glam, men in black tuxedo and women in white/beige/silver shimmer attire',
             image: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=1000&auto=format&fit=crop',
-            mapLink: '#'
+            mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
             title: 'Agnisakshi: Our Forever Begins',
@@ -39,7 +39,7 @@ function Events() {
             description: 'Sacred fire, eternal promises, and hearts intertwined.',
             dressCode: 'Traditional, men in kurta pajama with jacket and women in silk saree or lehnga for our pure mandir',
             image: 'https://images.unsplash.com/photo-1583934555026-17a111400030?q=80&w=1000&auto=format&fit=crop',
-            mapLink: '#'
+            mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
             title: 'Mangalam Milanam',
@@ -50,7 +50,7 @@ function Events() {
             description: 'A majestic finale filled with love, laughter, and family blessings.',
             dressCode: 'Indian traditional, men in jodhpuri, achkan, bandgala and suit and women in lehnga and saree.',
             image: 'https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=1000&auto=format&fit=crop',
-            mapLink: '#'
+            mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         }
     ];
 

@@ -49,16 +49,13 @@
 }
 
 .header-hashtag {
-    font-family: var(--font-accent);
     font-size: 1.1rem;
     color: #000;
     margin-left: 1rem;
-    letter-spacing: 0.5px;
     background: transparent;
     transition: all 0.3s ease;
     display: inline-block;
     vertical-align: middle;
-    font-weight: 500;
 }
 
 .header.scrolled .header-hashtag {
@@ -72,7 +69,8 @@
 .header-right {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 2.5rem;
+    /* Tightened gap */
 }
 
 .header-nav {
@@ -87,13 +85,14 @@
     background: none;
     border: none;
     color: inherit;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-size: 0.7rem;
+    /* Shrunk for cleaner look */
+    font-weight: 500;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.4rem 0;
     font-family: var(--font-sans);
 }
 
@@ -104,12 +103,12 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--color-primary);
+    background: #000000;
     transition: width 0.3s ease;
 }
 
 .header-nav button:hover {
-    color: var(--color-primary);
+    color: #000000;
 }
 
 .header-nav button:hover::after {

@@ -43,15 +43,15 @@
 }
 
 .couple-name {
-    font-size: 3rem;
-    color: var(--color-primary);
-    margin-bottom: 1rem;
+    /* Standardized by global H3 style */
+}
+
+.couple-card:hover .couple-name {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .couple-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-text-light);
+    /* Standardized by global P style */
     max-width: 400px;
     margin: 0 auto;
 }

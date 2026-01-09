@@ -1,118 +1,141 @@
 .rsvp {
-    background: var(--color-white);
-    padding: 8rem 0;
+    background: var(--color-bg);
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.rsvp-card {
+    background: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4rem 3rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.05);
+}
+
+/* Aesthetic Card Corner Decor */
+.rsvp-card::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    pointer-events: none;
 }
 
 .rsvp-header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding: 0 1rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    z-index: 1;
 }
 
-.rsvp-main-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 6vw, 3.5rem);
-    font-weight: 800;
-    color: var(--color-text);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    margin: 0;
+.rsvp-ornament {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    opacity: 0.6;
+}
+
+/* Cleaned up redundant rules */
+
+.rsvp-subtitle {
+    /* Standardized by global P style */
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .rsvp-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-group label {
+    font-family: var(--font-serif);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #000;
+    font-weight: 600;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
     background: transparent;
-    font-family: var(--font-sans);
-    font-size: 1rem;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
     color: var(--color-text);
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: all 0.4s ease;
     border-radius: 0;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-bottom-color: var(--color-primary);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #999;
-    font-weight: 300;
-    letter-spacing: 1px;
+    border-bottom-color: #000;
+    padding-left: 10px;
 }
 
 .submit-btn {
-    background: var(--color-text);
-    color: var(--color-white);
-    border: none;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
     padding: 1.2rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
+    transition: all 0.4s ease;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    font-family: var(--font-serif);
+    /* Specific for button text */
 }
 
 .submit-btn:hover {
-    background: var(--color-primary);
-    color: var(--color-text);
+    background: transparent;
+    color: #000;
 }
 
 @media (max-width: 768px) {
     .rsvp {
-        padding: 3rem 0;
+        padding: 4rem 1.5rem;
     }
 
-    .rsvp-header {
-        margin-bottom: 2rem;
+    .rsvp-card {
+        padding: 3rem 1.5rem;
     }
 
     .rsvp-main-title {
-        letter-spacing: 1px;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
     }
 
-    .rsvp-form {
-        gap: 1.5rem;
+    .rsvp-subtitle {
+        max-width: 100%;
+        font-size: 0.85rem;
     }
 
     .form-group input,
     .form-group textarea {
-        padding: 1rem;
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        border-radius: 4px;
-        font-size: 0.95rem;
-        background: rgba(0, 0, 0, 0.02);
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-        border-color: var(--color-primary);
-        background: white;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-        font-size: 0.9rem;
-    }
-
-    .submit-btn {
-        padding: 1.1rem;
-        font-size: 0.85rem;
-        letter-spacing: 1.8px;
-        margin-top: 0.5rem;
-        min-height: 48px;
+        font-size: 1rem;
     }
 }

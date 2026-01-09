@@ -4,11 +4,23 @@
     overflow: hidden;
 }
 
+.our-story.events {
+    background-color: #FFFFFF;
+    padding: 2rem 0 0 0;
+    /* Reduced top padding */
+    color: #000000;
+}
+
 .story-timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 0.5rem 0;
+}
+
+.gallery {
+    background: #ffffff;
+    padding: 0 0 2rem 0;
 }
 
 /* Flowing Line Animation */
@@ -74,9 +86,8 @@
 }
 
 .story-title {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
+    /* Standardized by global H3 style */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .story-date {
@@ -88,11 +99,7 @@
     margin-bottom: 1.5rem;
 }
 
-.story-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-text-light);
-}
+/* Cleaned up empty rules */
 
 @media (max-width: 768px) {
 
@@ -107,7 +114,7 @@
     .story-content {
         flex-direction: column !important;
         gap: 1.5rem;
-        text-align: center;
+        text-align: justify;
     }
 
     .story-item.right .story-content {
@@ -115,7 +122,7 @@
     }
 
     .story-item.right .story-text {
-        text-align: center;
+        text-align: justify;
     }
 
     .story-image-wrapper {
@@ -127,12 +134,14 @@
         font-size: 1.75rem;
         margin-bottom: 0.5rem;
         letter-spacing: -0.5px;
+        text-align: center;
     }
 
     .story-date {
         font-size: 0.85rem;
         margin-bottom: 1rem;
         letter-spacing: 1.5px;
+        text-align: center;
     }
 
     .story-text {
@@ -146,6 +155,6 @@
     .story-description {
         font-size: 0.95rem;
         line-height: 1.7;
-        text-align: center;
+        text-align: justify;
     }
 }
