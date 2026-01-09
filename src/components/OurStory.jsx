@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -10,7 +10,7 @@ function OurStory() {
     const storyRef = useRef(null);
     const pathRef = useRef(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const ctx = gsap.context(() => {
             // Heart Path Animation
             gsap.fromTo(pathRef.current,
@@ -19,7 +19,7 @@ function OurStory() {
                     strokeDashoffset: 0,
                     scrollTrigger: {
                         trigger: storyRef.current,
-                        start: "top 20%",
+                        start: "top 60%",
                         end: "bottom 80%",
                         scrub: 1,
                     }
@@ -28,19 +28,30 @@ function OurStory() {
 
             // Staggered Item Reveals
             gsap.utils.toArray(".story-item").forEach((item, i) => {
-                gsap.from(item, {
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 85%",
-                        toggleActions: "play none none none" // Stay visible
+                gsap.fromTo(item,
+                    {
+                        x: i % 2 === 0 ? -80 : 80,
+                        opacity: 0,
+                        scale: 0.95
                     },
-                    x: i % 2 === 0 ? -100 : 100,
-                    opacity: 0,
-                    duration: 1.2,
-                    ease: "power3.out"
-                });
+                    {
+                        x: 0,
+                        opacity: 1,
+                        scale: 1,
+                        duration: 1.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
             });
         }, storyRef);
+
+        // Refresh triggers once all components are likely rendered
+        setTimeout(() => ScrollTrigger.refresh(), 500);
 
         return () => ctx.revert();
     }, []);

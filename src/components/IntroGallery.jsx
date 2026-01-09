@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './IntroGallery.css';
@@ -9,46 +9,53 @@ const IntroGallery = () => {
     const sectionRef = useRef(null);
     const cardsRef = useRef([]);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const ctx = gsap.context(() => {
             // Parallax Reveal
-            gsap.from(".card-left", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1.5,
-                },
-                xPercent: -30,
-                rotate: -20,
-                opacity: 0,
-                ease: "none"
-            });
+            gsap.fromTo(".card-left",
+                { xPercent: -30, rotate: -20, opacity: 0 },
+                {
+                    xPercent: 0,
+                    rotate: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top bottom",
+                        end: "bottom center",
+                        scrub: 1.5,
+                    }
+                }
+            );
 
-            gsap.from(".card-right", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1.5,
-                },
-                xPercent: 30,
-                rotate: 20,
-                opacity: 0,
-                ease: "none"
-            });
+            gsap.fromTo(".card-right",
+                { xPercent: 30, rotate: 20, opacity: 0 },
+                {
+                    xPercent: 0,
+                    rotate: 0,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top bottom",
+                        end: "bottom center",
+                        scrub: 1.5,
+                    }
+                }
+            );
 
             // Center card zoom
-            gsap.from(".card-center", {
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top bottom",
-                    end: "bottom center",
-                    scrub: 2,
-                },
-                scale: 0.8,
-                opacity: 0,
-            });
+            gsap.fromTo(".card-center",
+                { scale: 0.8, opacity: 0 },
+                {
+                    scale: 1,
+                    opacity: 1,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top bottom",
+                        end: "bottom center",
+                        scrub: 2,
+                    }
+                }
+            );
 
             // Floating movement
             gsap.to(".stack-card", {
@@ -62,6 +69,8 @@ const IntroGallery = () => {
                 stagger: 0.5
             });
         }, sectionRef);
+
+        setTimeout(() => ScrollTrigger.refresh(), 400);
 
         return () => ctx.revert();
     }, []);

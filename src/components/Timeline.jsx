@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -20,51 +20,59 @@ function Timeline() {
     const containerRef = useRef(null);
     const orbitRef = useRef(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const ctx = gsap.context(() => {
             // Header reveal
-            gsap.from(".section-header-styled", {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
-            });
+            gsap.fromTo(".section-header-styled",
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 80%",
+                    }
+                }
+            );
 
             // Center image entrance
-            gsap.from(".center-stage", {
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 60%",
-                },
-                scale: 0,
-                rotate: 180,
-                duration: 1.5,
-                ease: "back.out(1.7)"
-            });
+            gsap.fromTo(".center-stage",
+                { scale: 0, rotate: -180, opacity: 0 },
+                {
+                    scale: 1,
+                    rotate: 0,
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: "top 60%",
+                    }
+                }
+            );
 
             // Orbit items "explosion" reveal
-            gsap.from(".orbit-item", {
-                scrollTrigger: {
-                    trigger: orbitRef.current,
-                    start: "top 70%",
-                },
-                x: 0,
-                y: 0,
-                opacity: 0,
-                scale: 0,
-                stagger: 0.1,
-                duration: 1.2,
-                ease: "power4.out"
-            });
+            gsap.fromTo(".orbit-item",
+                { opacity: 0, scale: 0 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    stagger: 0.1,
+                    duration: 1.2,
+                    ease: "power4.out",
+                    scrollTrigger: {
+                        trigger: orbitRef.current,
+                        start: "top 70%",
+                    }
+                }
+            );
 
-            // Constant gentle rotation or floating
+            // Constant gentle floating
             gsap.to(".orbit-item", {
-                y: "+=10",
-                duration: 2,
+                y: "+=15",
+                duration: 2.5,
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut",
@@ -74,6 +82,8 @@ function Timeline() {
                 }
             });
         }, containerRef);
+
+        setTimeout(() => ScrollTrigger.refresh(), 600);
 
         return () => ctx.revert();
     }, []);

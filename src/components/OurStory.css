@@ -25,7 +25,6 @@
 .story-item {
     position: relative;
     margin-bottom: 6rem;
-    animation: fadeInUp 0.8s ease-out;
 }
 
 .story-content {
