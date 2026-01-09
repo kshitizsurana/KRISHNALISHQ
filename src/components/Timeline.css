@@ -99,6 +99,38 @@
     object-fit: cover;
 }
 
+.section-header-styled {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+.section-logo {
+    height: 50px;
+    width: auto;
+    opacity: 0.8;
+}
+
+.divider-line {
+    height: 1px;
+    background-color: #1a1a1a;
+    flex: 0 1 100px;
+    opacity: 0.3;
+}
+
+.section-title-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+
 /* Orbit Items */
 .orbit-container {
     position: absolute;
@@ -199,35 +231,50 @@
 @media (max-width: 768px) {
     .section-header-styled {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 1rem;
         margin-bottom: 2rem;
+        align-items: center;
+        width: 100%;
+    }
+
+    .divider-line {
+        display: none;
     }
 
     .section-logo {
-        height: 25px;
-        /* Even smaller for mobile */
+        height: 35px;
+        opacity: 1;
     }
 
     .section-title-serif {
-        font-size: 1.3rem;
-        letter-spacing: 2px;
+        font-size: 1.5rem;
+        text-align: center;
     }
 
     .circular-timeline-container {
         position: relative;
-        left: 50%;
-        transform: translateX(-50%) scale(0.4);
-        /* Scaled down and perfectly centered */
-        transform-origin: top center;
-        margin-top: 1rem;
-        margin-bottom: -18rem;
+        left: 0;
+        margin: 0 auto;
+        transform: scale(0.4);
+        transform-origin: center top;
+        margin-top: -2rem;
+        margin-bottom: -20rem;
         height: 800px;
         width: 800px;
-        /* Keep defined width */
+        display: block;
+        /* Centered by margin auto */
     }
 
     .timeline {
         padding: 4rem 0 0;
+        align-items: center;
+    }
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
