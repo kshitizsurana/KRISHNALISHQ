@@ -96,13 +96,16 @@ function Timeline() {
                     <div className="divider-line"></div>
                     <h2 className="section-title-serif">Wedding Day</h2>
                     <div className="divider-line"></div>
-                    <img src="/hashtag.png" alt="#KrishNaIshq" className="section-logo" />
+                    <img src="/hashtag.png" alt="#KrishNalIshq" className="section-logo" />
                 </div>
 
                 <div className="circular-timeline-container" ref={orbitRef}>
                     <div className="circle-ripple c1"></div>
                     <div className="circle-ripple c2"></div>
                     <div className="circle-ripple c3"></div>
+                    <div className="circle-ripple c4"></div>
+                    <div className="circle-ripple c5"></div>
+                    <div className="circle-ripple c6"></div>
 
                     <div className="center-stage">
                         <div className="center-image-wrapper">
@@ -113,7 +116,7 @@ function Timeline() {
                     <div className="orbit-container">
                         {timelineEvents.map((item, index) => {
                             const angle = (index / timelineEvents.length) * 360;
-                            const radius = 350; // Match CSS variable if possible or hardcode
+                            const radius = 340; // Moved closer to center to keep on screen
                             return (
                                 <div
                                     key={item.id}

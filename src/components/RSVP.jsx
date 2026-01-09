@@ -28,8 +28,7 @@ function RSVP() {
                     transition={{ duration: 1 }}
                 >
                     <div className="rsvp-header">
-                        <h2 className="section-title">RSVP</h2>
-                        <p className="rsvp-subtitle">Will you be attending?</p>
+                        <h2 className="rsvp-main-title">CONFIRMATION AT WEDDING</h2>
                     </div>
 
                     <form className="rsvp-form" onSubmit={handleSubmit}>
@@ -89,7 +88,7 @@ function RSVP() {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            Confirm Attendance
+                            SUBMIT
                         </motion.button>
                     </form>
                 </motion.div>

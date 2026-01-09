@@ -65,40 +65,39 @@ function Footer() {
                 <motion.h2 className="footer-names script-text" variants={itemVariants}>
                     Ishika & Krishna
                 </motion.h2>
+
+                <motion.div className="countdown-section-aesthetic" variants={itemVariants}>
+                    <p className="countdown-top-label">MISSING DAYS TO</p>
+                    <h2 className="footer-wedding-title script-text">
+                        Our Wedding
+                    </h2>
+
+                    <div className="countdown-timer-aesthetic">
+                        <div className="timer-circle-item">
+                            <span className="timer-value">{timeLeft.days}</span>
+                            <span className="timer-label">DAYS</span>
+                        </div>
+                        <div className="timer-circle-item">
+                            <span className="timer-value">{timeLeft.hours}</span>
+                            <span className="timer-label">HOURS</span>
+                        </div>
+                        <div className="timer-circle-item">
+                            <span className="timer-value">{timeLeft.minutes}</span>
+                            <span className="timer-label">MINUTES</span>
+                        </div>
+                        <div className="timer-circle-item">
+                            <span className="timer-value">{timeLeft.seconds}</span>
+                            <span className="timer-label">SECONDS</span>
+                        </div>
+                    </div>
+                </motion.div>
+
                 <motion.p className="footer-message" variants={itemVariants}>
                     We can't wait to celebrate with you
                 </motion.p>
 
-                <motion.div className="countdown-container" variants={itemVariants}>
-                    <motion.p
-                        className="countdown-label"
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    >
-                        Missing Days to Wedding Timeline
-                    </motion.p>
-                    <div className="countdown-timer">
-                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
-                            <span className="timer-value">{timeLeft.days}</span>
-                            <span className="timer-label">Days</span>
-                        </motion.div>
-                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
-                            <span className="timer-value">{timeLeft.hours}</span>
-                            <span className="timer-label">Hours</span>
-                        </motion.div>
-                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
-                            <span className="timer-value">{timeLeft.minutes}</span>
-                            <span className="timer-label">Mins</span>
-                        </motion.div>
-                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
-                            <span className="timer-value">{timeLeft.seconds}</span>
-                            <span className="timer-label">Secs</span>
-                        </motion.div>
-                    </div>
-                </motion.div>
-
                 <motion.p className="copyright" variants={itemVariants}>
-                    © 2026 Ishika Weds Krishna. All Rights Reserved.
+                    {/* © 2026 Ishika Weds Krishna. All Rights Reserved. */}
                 </motion.p>
             </motion.div>
         </footer>

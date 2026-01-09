@@ -1,4 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -9,26 +12,85 @@ import Timeline from './components/Timeline';
 import Gallery from './components/Gallery';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
-
 import LoadingScreen from './components/LoadingScreen';
-import IntroGallery from './components/IntroGallery'; // Import IntroGallery
+import IntroGallery from './components/IntroGallery';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [loading, setLoading] = useState(true);
+  const lenisRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
-      const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-      setScrollProgress(Math.min(Math.round(scrollPercent), 100));
-    };
+    // Initialize Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    lenisRef.current = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Sync Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
+    // Track scroll progress
+    lenis.on('scroll', ({ scroll, limit }) => {
+      const progress = Math.min(Math.round((scroll / limit) * 100), 100);
+      setScrollProgress(progress);
+    });
+
+    return () => {
+      lenis.destroy();
+      gsap.ticker.remove();
+    };
   }, []);
+
+  useEffect(() => {
+    if (!loading && lenisRef.current) {
+      // Add entrance animations for sections
+      gsap.utils.toArray('.section').forEach((section) => {
+        gsap.fromTo(
+          section,
+          {
+            opacity: 0,
+            y: 50,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          }
+        );
+      });
+    }
+  }, [loading]);
 
   if (loading) {
     return <LoadingScreen onComplete={() => setLoading(false)} />;
@@ -38,7 +100,7 @@ function App() {
     <div className="app">
       <Header scrollProgress={scrollProgress} />
       <Hero />
-      <IntroGallery /> {/* Added IntroGallery here */}
+      <IntroGallery />
       <div id="couple"><Couple /></div>
       <div id="story"><OurStory /></div>
       <div id="events"><Events /></div>

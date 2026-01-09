@@ -33,28 +33,48 @@
     opacity: 0;
 }
 
-.c1 {
+.c1,
+.c2,
+.c3,
+.c4,
+.c5,
+.c6 {
     width: 300px;
     height: 300px;
-    animation: rippleFlow 4s infinite linear;
-    border-color: rgba(160, 100, 100, 0.4);
+    animation: rippleFlow 2.5s infinite linear;
+    /* Faster animation */
 }
 
+.c1 {
+    border-color: rgba(160, 100, 100, 0.7);
+}
+
+/* Darker */
 .c2 {
-    width: 300px;
-    height: 300px;
-    animation: rippleFlow 4s infinite linear;
-    animation-delay: 1.3s;
-    border-color: rgba(160, 100, 100, 0.3);
+    animation-delay: 0.4s;
+    border-color: rgba(160, 100, 100, 0.6);
 }
 
 .c3 {
-    width: 300px;
-    height: 300px;
-    animation: rippleFlow 4s infinite linear;
-    animation-delay: 2.6s;
+    animation-delay: 0.8s;
+    border-color: rgba(160, 100, 100, 0.5);
+}
+
+.c4 {
+    animation-delay: 1.2s;
+    border-color: rgba(160, 100, 100, 0.4);
+}
+
+.c5 {
+    animation-delay: 1.6s;
+    border-color: rgba(160, 100, 100, 0.3);
+}
+
+.c6 {
+    animation-delay: 2.0s;
     border-color: rgba(160, 100, 100, 0.2);
 }
+
 
 @keyframes rippleFlow {
     0% {
@@ -153,8 +173,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 180px;
-    /* Increased from 150px */
+    width: 200px;
+    /* Even wider for even bigger text */
     pointer-events: auto;
     transition: transform 0.3s ease;
     z-index: 5;
@@ -168,15 +188,17 @@
 .orbit-number-box {
     background: #000;
     color: #fff;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    /* Even bigger */
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Lato', sans-serif;
-    font-size: 0.75rem;
+    font-size: 1.4rem;
+    /* Much bigger */
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
 }
 
 .orbit-content {
@@ -187,18 +209,22 @@
 
 .orbit-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    /* Massively bigger */
+    font-weight: 700;
     color: #1a1a1a;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .orbit-time {
     font-family: 'Lato', sans-serif;
-    font-size: 0.8rem;
-    color: #555;
-    margin-top: 0.25rem;
+    font-size: 1.2rem;
+    /* Even bigger */
+    color: #444;
+    margin-top: 0.4rem;
+    font-weight: 500;
 }
 
 /* Responsive adjustments */
@@ -233,8 +259,8 @@
 @media (max-width: 768px) {
     .section-header-styled {
         flex-direction: column;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
         align-items: center;
         width: 100%;
         text-align: center;
@@ -245,18 +271,18 @@
     }
 
     .section-logo {
-        height: 35px;
+        height: 32px;
         opacity: 1;
     }
 
     .section-title-serif {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
+        letter-spacing: 0.08em;
     }
 
     .circular-timeline-container {
         position: relative;
-        /* Parent is already centering this via Flexbox */
-        transform: scale(0.48);
+        transform: scale(0.5);
         transform-origin: center center;
         margin: 0;
         height: 800px;
@@ -267,9 +293,9 @@
     }
 
     .timeline {
-        padding: 4rem 0;
+        padding: 3rem 0;
         justify-content: center;
-        min-height: 100vh;
+        min-height: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -287,8 +313,11 @@
 
 @media (max-width: 480px) {
     .circular-timeline-container {
-        transform: scale(0.42);
-        /* Maximum width for small screens */
-        margin: 1rem 0;
+        transform: scale(0.45);
+        margin: 0;
+    }
+
+    .section-title-serif {
+        font-size: 1.2rem;
     }
 }

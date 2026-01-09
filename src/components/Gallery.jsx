@@ -1,48 +1,74 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Gallery.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Gallery() {
     const [selectedImage, setSelectedImage] = useState(null);
+    const sectionRef = useRef(null);
+    const gridRef = useRef(null);
 
     const images = [
-        { src: '/story_meeting_1767951851794.png', span: 'col-2 row-2' },
-        { src: '/story_date_1767951873660.png', span: 'col-1 row-1' },
-        { src: '/story_proposal_1767951897199.png', span: 'col-1 row-2' },
-        { src: '/bride_portrait_1767951817922.png', span: 'col-1 row-1' },
-        { src: '/groom_portrait_1767951834123.png', span: 'col-2 row-1' },
-        { src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800', span: 'col-1 row-2' },
-        { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', span: 'col-2 row-2' },
+        { src: '/story_meeting_1767951851794.png', layout: 'item-1' }, // Big Portrait (Left)
+        { src: '/bride_portrait_1767951817922.png', layout: 'item-2' }, // Small (Top center-right)
+        { src: '/groom_portrait_1767951834123.png', layout: 'item-3' }, // Small (Top right)
+        { src: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?w=800', layout: 'item-4' }, // Mehndi Hands (Center right)
+        { src: '/story_date_1767951873660.png', layout: 'item-5' }, // Small (Lower left)
+        { src: '/story_proposal_1767951897199.png', layout: 'item-6' }, // Small (Lower center-left)
+        { src: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?w=800', layout: 'item-7' }, // Sunset Portrait (Bottom left)
+        { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', layout: 'item-8' }, // Dog Close-up (Tall Right)
     ];
 
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(".gallery-item",
+                {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.98
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1.2,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: "top 80%",
+                    }
+                }
+            );
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="gallery section" id="gallery">
+        <section className="gallery section" id="gallery" ref={sectionRef}>
             <div className="container">
                 <motion.h2
                     className="section-title"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
                 >Picture Perfect Moments</motion.h2>
 
-                <div className="gallery-grid">
+                <div className="gallery-grid-exact" ref={gridRef}>
                     {images.map((img, index) => (
-                        <motion.div
+                        <div
                             key={index}
-                            className={`gallery-item ${img.span}`}
+                            className={`gallery-item ${img.layout}`}
                             onClick={() => setSelectedImage(img.src)}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
                         >
                             <div className="gallery-overlay">
-                                <span className="view-text">View</span>
+                                <span className="view-text">Enlarge</span>
                             </div>
                             <img src={img.src} alt={`Gallery moment ${index + 1}`} loading="lazy" />
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -59,10 +85,10 @@ function Gallery() {
                         <button className="close-btn">&times;</button>
                         <motion.img
                             src={selectedImage}
-                            alt="Enlarged view"
-                            initial={{ scale: 0.8, y: 20 }}
-                            animate={{ scale: 1, y: 0 }}
-                            exit={{ scale: 0.8, y: 20 }}
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         />
                     </motion.div>
                 )}

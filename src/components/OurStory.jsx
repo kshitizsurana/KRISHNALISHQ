@@ -8,37 +8,48 @@ gsap.registerPlugin(ScrollTrigger);
 
 function OurStory() {
     const storyRef = useRef(null);
-    const pathRef = useRef(null);
+    const lineRef = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            // Heart Path Animation
-            gsap.fromTo(pathRef.current,
-                { strokeDashoffset: 300 },
-                {
+            if (lineRef.current) {
+                const pathLength = lineRef.current.getTotalLength();
+
+                gsap.set(lineRef.current, {
+                    strokeDasharray: pathLength,
+                    strokeDashoffset: pathLength
+                });
+
+                gsap.to(lineRef.current, {
                     strokeDashoffset: 0,
+                    ease: "none",
                     scrollTrigger: {
                         trigger: storyRef.current,
-                        start: "top 60%",
-                        end: "bottom 80%",
-                        scrub: 1,
+                        start: "top center",
+                        end: "bottom center",
+                        scrub: 1.5,
                     }
-                }
-            );
+                });
+            }
 
-            // Staggered Item Reveals
+
+
             gsap.utils.toArray(".story-item").forEach((item, i) => {
+                const isLeft = i % 2 === 0;
+
                 gsap.fromTo(item,
                     {
-                        x: i % 2 === 0 ? -80 : 80,
+                        x: isLeft ? -100 : 100,
                         opacity: 0,
-                        scale: 0.95
+                        scale: 0.9,
+                        rotateY: isLeft ? -15 : 15
                     },
                     {
                         x: 0,
                         opacity: 1,
                         scale: 1,
-                        duration: 1.2,
+                        rotateY: 0,
+                        duration: 1.4,
                         ease: "power3.out",
                         scrollTrigger: {
                             trigger: item,
@@ -47,10 +58,23 @@ function OurStory() {
                         }
                     }
                 );
+
+                const image = item.querySelector('.story-image');
+                if (image) {
+                    gsap.to(image, {
+                        y: -30,
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top bottom",
+                            end: "bottom top",
+                            scrub: 1
+                        }
+                    });
+                }
             });
         }, storyRef);
 
-        // Refresh triggers once all components are likely rendered
         setTimeout(() => ScrollTrigger.refresh(), 500);
 
         return () => ctx.revert();
@@ -60,19 +84,19 @@ function OurStory() {
         {
             title: 'First Meeting',
             date: '16 July 2025, The Lalit, Jaipur',
-            description: 'Their parents played cupid. She walked in a little nervous, he was calm. They spoke softly, laughed a little, and found comfort in the quiet pauses. Somehow, it felt right, he felt steady and familiar, she felt at home. (Soft note: one day before meeting him, she had spotted someone like him at her favourite café and got slightly ticked off, so she decided to meet him tomorrow and “say no” 😄)',
+            description: `Their parents played cupid. She walked in a little nervous, he was calm. They spoke softly, laughed a little, and found comfort in the quiet pauses. Somehow, it felt right, he felt steady and familiar, she felt at home. (Soft note: one day before meeting him, she had spotted someone like him at her favourite café and got slightly ticked off, so she decided to meet him tomorrow and "say no" 😄)`,
             image: '/story_meeting_1767951851794.png'
         },
         {
             title: 'First Date',
             date: 'The Verandah, Rambagh Palace',
-            description: "She suggested, ‘Let’s go to the verandah.’ He smiled, confident he knew Jaipur like the back of his hand, yet somehow, he didn’t have the faintest idea where she meant. When she added, ‘Rambagh?’ he laughed and said, ‘Ah, of course, let’s go.’ He reached a little early, brimming with curiosity, and she kept him waiting forty minutes. He pretended to be annoyed, grumbling under his breath, but every sigh hid a little smile, he was happy just being there, waiting for her. At that charming place, the world seemed to fade away. Over almond coffee and sparkling water, they talked endlessly, about people, places, food, travel, eight hours passing as if in a heartbeat. No hurry, no agenda, just them. Yet in those quiet, effortless hours, something gentle and unforgettable quietly began.",
+            description: `She suggested, 'Let's go to Verandah.' He smiled, confident he knew Jaipur like the back of his hand, yet somehow, he didn't have the faintest idea where she meant. When she added, 'Rambagh?' he laughed and said, 'Ah, of course, let's go.' He reached a little early, brimming with curiosity, and she kept him waiting forty minutes. He pretended to be annoyed, grumbling under his breath, but every sigh hid a little smile, he was happy just being there, waiting for her. At that charming place, the world seemed to fade away. Over almond coffee and sparkling water, they talked endlessly, about people, places, food, travel, eight hours passing as if in a heartbeat. No hurry, no agenda, just them. Yet in those quiet, effortless hours, something gentle and unforgettable quietly began.`,
             image: '/story_date_1767951873660.png'
         },
         {
             title: 'Engagement',
             date: 'A Promise of Forever',
-            description: "On their engagement day, the world around them seemed to blur, though, of course, it didn’t really matter. Mere Sohneya played softly in the background, and with every note, they fell for each other even harder. Silently, on bended knees, they whispered “partners forever”. Her smile lit up the room, his eyes sparkled like stars, and in that moment, time itself felt magical. He held her simply, lifting her heavy lehnga with ease, and in that gentle, effortless touch, their joined hands carried a promise: to always stand by each other, through every tomorrow.",
+            description: `On their engagement day, the world around them seemed to blur, though, of course, it didn't really matter. Mere Sohneya played softly in the background, and with every note, they fell for each other even harder. Silently, on bended knees, they whispered "partners forever". Her smile lit up the room, his eyes sparkled like stars, and in that moment, time itself felt magical. He held her simply, lifting her heavy lehnga with ease, and in that gentle, effortless touch, their joined hands carried a promise: to always stand by each other, through every tomorrow.`,
             image: '/story_proposal_1767951897199.png'
         }
     ];
@@ -85,22 +109,32 @@ function OurStory() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
                 >Our Story</motion.h2>
 
                 <div className="story-timeline">
-                    <svg className="heart-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <svg className="flowing-line" viewBox="0 0 100 2000" preserveAspectRatio="none">
                         <path
-                            ref={pathRef}
-                            d="M50,90 C50,90 10,60 10,35 C10,20 20,10 30,10 C40,10 50,20 50,20 C50,20 60,10 70,10 C80,10 90,20 90,35 C90,60 50,90 50,90 Z"
+                            ref={lineRef}
+                            d="M 50 0 Q 30 200 50 400 T 50 800 Q 70 1000 50 1200 T 50 1600 Q 30 1800 50 2000"
                             fill="none"
-                            stroke="var(--color-primary)"
-                            strokeWidth="0.5"
-                            strokeDasharray="300"
+                            stroke="url(#lineGradient)"
+                            strokeWidth="2"
+                            strokeLinecap="round"
                         />
+                        <defs>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stopColor="rgba(255, 183, 197, 0.3)" />
+                                <stop offset="50%" stopColor="rgba(255, 183, 197, 0.8)" />
+                                <stop offset="100%" stopColor="rgba(255, 183, 197, 0.3)" />
+                            </linearGradient>
+                        </defs>
                     </svg>
 
                     {stories.map((story, index) => (
                         <div key={index} className={`story-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+
+
                             <div className="story-content">
                                 <div className="story-image-wrapper">
                                     <img src={story.image} alt={story.title} className="story-image" />

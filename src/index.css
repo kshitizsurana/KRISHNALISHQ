@@ -13,10 +13,33 @@
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
   --font-script: 'Great Vibes', cursive;
+
+  /* Mobile-First Spacing Scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+
+  /* Mobile-First Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+
+  /* Section Padding for Mobile */
+  --section-padding-mobile: 3rem;
+  --section-padding-desktop: 6rem;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
 body {
@@ -24,6 +47,9 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 #root {
@@ -33,7 +59,8 @@ body {
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 5vw;
+  /* Use percentage-based padding for a 'full yet spacious' feel */
 }
 
 h1,
@@ -48,15 +75,16 @@ h6 {
 
 .section {
   position: relative;
-  padding: 100px 0;
+  padding: var(--section-padding-mobile) 0;
 }
 
 .section-title {
-  font-size: 3.5rem;
+  font-size: var(--font-size-3xl);
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--spacing-xl);
   font-weight: 600;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .script-text {
@@ -65,17 +93,28 @@ h6 {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 5vw;
+  }
+
   .section {
-    padding: 60px 0;
+    padding: var(--section-padding-mobile) 0;
   }
 
   .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: -0.5px;
+  }
+}
+
+@media (min-width: 769px) {
+  .section {
+    padding: var(--section-padding-desktop) 0;
   }
 
-  .container {
-    padding: 0 1rem;
+  .section-title {
+    font-size: var(--font-size-4xl);
   }
 }
 

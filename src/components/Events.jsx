@@ -1,5 +1,10 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Events.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Events() {
     const events = [
@@ -49,51 +54,71 @@ function Events() {
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.3
-            }
-        }
-    };
+    const sectionRef = useRef(null);
+    const gridRef = useRef(null);
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, ease: "easeOut" }
-        }
-    };
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Staggered reveal for cards with scale and rotation
+            gsap.fromTo(".event-card",
+                {
+                    opacity: 0,
+                    y: 100,
+                    scale: 0.9,
+                    rotateX: -10
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateX: 0,
+                    duration: 1.2,
+                    stagger: 0.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+
+            // Floating animation for cards after they appear
+            gsap.utils.toArray(".event-card").forEach((card, i) => {
+                gsap.to(card, {
+                    y: "-15px",
+                    duration: 2 + Math.random(),
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: i * 0.5
+                });
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <section className="events section" id="events">
+        <section className="events section" id="events" ref={sectionRef}>
             <div className="container">
                 <motion.div
                     className="section-header-styled"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
                 >
                     <img src="/logo.png" alt="Logo" className="section-logo" />
                     <div className="divider-line"></div>
                     <h2 className="section-title-serif">Events Schedule</h2>
                     <div className="divider-line"></div>
-                    <img src="/hashtag.png" alt="#KrishNaIshq" className="section-logo" />
+                    <span className="section-hashtag accent-text">#KrishNalIshq</span>
                 </motion.div>
 
-                <motion.div
-                    className="events-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                >
+                <div className="events-grid" ref={gridRef} style={{ perspective: "1500px" }}>
                     {events.map((event, index) => (
-                        <motion.div key={index} className="event-card" variants={cardVariants}>
+                        <div key={index} className="event-card">
                             <div className="event-image">
                                 <img src={event.image} alt={event.title} />
                                 <div className="event-date-overlay">
@@ -127,9 +152,9 @@ function Events() {
                                     </span>
                                 </a>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

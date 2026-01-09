@@ -39,6 +39,14 @@
     opacity: 0.3;
 }
 
+.section-hashtag {
+    font-family: var(--font-accent);
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
 .events-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -191,29 +199,76 @@
 @media (max-width: 768px) {
     .section-header-styled {
         flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
         align-items: center;
-    }
-
-    .section-title-serif {
-        font-size: 1.5rem;
-    }
-
-    .section-logo {
-        height: 35px;
+        width: 100%;
+        text-align: center;
     }
 
     .divider-line {
         display: none;
     }
 
+    .section-logo {
+        height: 32px;
+        opacity: 1;
+    }
+
+    .section-title-serif {
+        font-size: 1.35rem;
+        letter-spacing: 0.08em;
+    }
+
+    .section-hashtag {
+        font-size: 1.1rem;
+    }
+
+    .events {
+        padding: 3rem 5vw;
+    }
+
     .events-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.5rem;
+        padding: 0;
     }
 
     .event-image {
         height: 250px;
+    }
+
+    .event-content {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .event-title {
+        font-size: 1.35rem;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.5rem;
+    }
+
+    .event-tagline {
+        font-size: 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .meta-item {
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+    }
+
+    .event-description {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .view-location-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.9rem 2rem;
+        font-size: 0.65rem;
     }
 }

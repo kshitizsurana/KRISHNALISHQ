@@ -71,23 +71,21 @@
     transform: translateY(-25px) scale(1.12);
 }
 
-@media (max-width: 900px) {
-    .gallery-stack {
-        transform: scale(0.6);
-        /* Scale down for mobile */
-        height: 400px;
-        /* Reduced height to account for scale */
-        margin: -2rem auto;
+@media (max-width: 768px) {
+    .intro-gallery {
+        padding: 4rem 0;
     }
 
-
+    .gallery-stack {
+        height: 450px;
+        transform: scale(0.65);
+        margin: -50px auto;
+    }
 }
 
 @media (max-width: 480px) {
     .gallery-stack {
-        transform: scale(0.4);
-        /* Scale down even further for small phones */
-        height: 300px;
-        margin: -4rem auto;
+        transform: scale(0.5);
+        height: 380px;
     }
 }
