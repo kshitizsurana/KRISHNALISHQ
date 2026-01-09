@@ -1,11 +1,12 @@
-.timeline-section {
-    background-color: #FFF0F5;
-    /* Lavender Blush / Pastel Pink */
+.timeline {
+    background-color: #FFECF2;
+    /* Soft Pastel Pink - clearly visible */
     padding: 6rem 0;
     overflow: hidden;
     position: relative;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -196,24 +197,43 @@
 }
 
 @media (max-width: 768px) {
-    .circular-timeline-container {
-        transform: scale(0.45);
-        /* Scale the whole circular UI down */
-        margin-top: -10rem;
-        margin-bottom: -10rem;
-        height: 800px;
-        /* Keep defined height for the scale transform origin */
+    .section-header-styled {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
     }
 
-    .timeline-section {
-        min-height: 600px;
-        padding: 4rem 0;
+    .section-logo {
+        height: 25px;
+        /* Even smaller for mobile */
+    }
+
+    .section-title-serif {
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+    }
+
+    .circular-timeline-container {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%) scale(0.4);
+        /* Scaled down and perfectly centered */
+        transform-origin: top center;
+        margin-top: 1rem;
+        margin-bottom: -18rem;
+        height: 800px;
+        width: 800px;
+        /* Keep defined width */
+    }
+
+    .timeline {
+        padding: 4rem 0 0;
     }
 }
 
 @media (max-width: 480px) {
     .circular-timeline-container {
-        transform: scale(0.38);
-        /* Even smaller for tiny screens */
+        transform: translateX(-50%) scale(0.32);
+        margin-bottom: -22rem;
     }
 }

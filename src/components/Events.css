@@ -123,10 +123,10 @@
 }
 
 .meta-item svg {
-    color: #aed98a;
-    /* Soft green for icons matching reference if implicit, or neutral. Reference has green icons. */
-    color: #88b77b;
-    /* Muted green */
+    color: #FFB7C5;
+    /* Soft pink for icons */
+    color: #FFB7C5;
+    /* Muted pink */
 }
 
 .event-description {
@@ -183,7 +183,9 @@
 
 @media (max-width: 768px) {
     .section-header-styled {
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
     }
 
     .section-title-serif {
@@ -195,9 +197,7 @@
     }
 
     .divider-line {
-        flex: 0 1 40px;
-        display: block;
-        /* Ensure it stays visible */
+        display: none;
     }
 
     .events-grid {
