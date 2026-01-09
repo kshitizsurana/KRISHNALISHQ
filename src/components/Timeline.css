@@ -253,16 +253,13 @@
 
     .circular-timeline-container {
         position: relative;
-        left: 0;
-        margin: 0 auto;
-        transform: scale(0.4);
+        left: 50%;
+        transform: translateX(-50%) scale(0.4);
         transform-origin: center top;
         margin-top: -2rem;
         margin-bottom: -20rem;
         height: 800px;
         width: 800px;
-        display: block;
-        /* Centered by margin auto */
     }
 
     .timeline {
@@ -280,6 +277,7 @@
 
 @media (max-width: 480px) {
     .circular-timeline-container {
+        left: 50%;
         transform: translateX(-50%) scale(0.32);
         margin-bottom: -22rem;
     }
