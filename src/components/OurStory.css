@@ -1,0 +1,129 @@
+.our-story {
+    background: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.story-timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.heart-svg {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.story-item {
+    position: relative;
+    margin-bottom: 6rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.story-item.left .story-content {
+    direction: ltr;
+}
+
+.story-item.right .story-content {
+    direction: rtl;
+}
+
+.story-item.right .story-text {
+    direction: ltr;
+    text-align: right;
+}
+
+.story-image-wrapper {
+    width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.story-image-wrapper:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-text {
+    padding: 2rem;
+}
+
+.story-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+}
+
+.story-date {
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.story-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-light);
+}
+
+@media (max-width: 768px) {
+    .heart-svg {
+        display: none;
+    }
+
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .story-item.right .story-content {
+        direction: ltr;
+    }
+
+    .story-item.right .story-text {
+        text-align: left;
+    }
+
+    .story-image-wrapper {
+        height: 300px;
+    }
+
+    .story-title {
+        font-size: 2rem;
+    }
+
+    .story-text {
+        padding: 1rem 0;
+    }
+
+    .story-item {
+        margin-bottom: 3rem;
+    }
+}
