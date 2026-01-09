@@ -1,65 +1,117 @@
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion } from 'framer-motion';
 import './Timeline.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Timeline() {
     const timelineEvents = [
         { id: '01', event: 'Under the Sea Carnival', time: '12:00 PM', desc: 'Feb 09' },
         { id: '02', event: 'Sangeet O’Clock', time: '8:00 PM', desc: 'Feb 09' },
         { id: '03', event: 'Gud Chadi', time: '9:00 AM', desc: 'Feb 10' },
-        { id: '04', event: 'Agnisakshi', time: '12:00 PM', desc: 'Feb 10' },
+        { id: '04', event: 'Agnisakshi: Our Forever Begins', time: '12:00 PM', desc: 'Feb 10' },
         { id: '05', event: 'Shaan-e-Pagdi', time: '6:30 PM', desc: 'Feb 10' },
         { id: '06', event: 'Beats & Baraat', time: '7:00 PM', desc: 'Feb 10' },
-        { id: '07', event: 'Mangalam Milanam', time: '8:00 PM', desc: 'Feb 10' }
+        { id: '07', event: 'Mangalam Milanam: A Grand Celebration of Ishika & Krishna', time: '8:00 PM', desc: 'Feb 10' }
     ];
 
+    const containerRef = useRef(null);
+    const orbitRef = useRef(null);
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+            // Header reveal
+            gsap.from(".section-header-styled", {
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 80%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            // Center image entrance
+            gsap.from(".center-stage", {
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 60%",
+                },
+                scale: 0,
+                rotate: 180,
+                duration: 1.5,
+                ease: "back.out(1.7)"
+            });
+
+            // Orbit items "explosion" reveal
+            gsap.from(".orbit-item", {
+                scrollTrigger: {
+                    trigger: orbitRef.current,
+                    start: "top 70%",
+                },
+                x: 0,
+                y: 0,
+                opacity: 0,
+                scale: 0,
+                stagger: 0.1,
+                duration: 1.2,
+                ease: "power4.out"
+            });
+
+            // Constant gentle rotation or floating
+            gsap.to(".orbit-item", {
+                y: "+=10",
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                stagger: {
+                    amount: 2,
+                    from: "random"
+                }
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="timeline section" id="timeline">
+        <section className="timeline section" id="timeline" ref={containerRef}>
             <div className="container">
                 <div className="section-header-styled">
-                    <span className="divider-line"></span>
+                    <img src="/logo.png" alt="Logo" className="section-logo" />
+                    <div className="divider-line"></div>
+                    <h2 className="section-title-serif">Wedding Day</h2>
+                    <div className="divider-line"></div>
                     <img src="/hashtag.png" alt="#KrishNaIshq" className="section-logo" />
-                    <h2 className="section-title-serif">WEDDING DAY</h2>
-                    <span className="divider-line"></span>
                 </div>
 
-                <div className="circular-timeline-container">
-                    {/* Animated Background Circles */}
+                <div className="circular-timeline-container" ref={orbitRef}>
                     <div className="circle-ripple c1"></div>
                     <div className="circle-ripple c2"></div>
                     <div className="circle-ripple c3"></div>
 
-                    {/* Central Image */}
                     <div className="center-stage">
                         <div className="center-image-wrapper">
-                            <img
-                                src="/bride_portrait_1767951817922.png"
-                                alt="Couple Center"
-                                className="center-img"
-                            />
+                            <img src="/bride_portrait_1767951817922.png" alt="Couple" className="center-img" />
                         </div>
                     </div>
 
-                    {/* Orbital Events */}
                     <div className="orbit-container">
                         {timelineEvents.map((item, index) => {
-                            const total = timelineEvents.length;
-                            // Start from -90deg (top) and distribute
-                            const angle = (360 / total) * index - 90;
-                            // Radius for the items
-                            const radius = 300; // Adjusted for desktop
-
-                            // Position calculation relies on CSS for cleaner DOM, 
-                            // but we need inline styles for dynamic angles.
-                            // We'll set the angle as a Custom Property variable.
-                            const style = {
-                                '--angle': `${angle}deg`,
-                                '--radius': `${radius}px`
-                            };
-
+                            const angle = (index / timelineEvents.length) * 360;
+                            const radius = 350; // Match CSS variable if possible or hardcode
                             return (
                                 <div
-                                    key={index}
+                                    key={item.id}
                                     className="orbit-item"
-                                    style={style}
+                                    style={{
+                                        '--angle': `${angle}deg`,
+                                        '--radius': `${radius}px`
+                                    }}
                                 >
                                     <div className="orbit-number-box">
                                         <span>{item.id}</span>

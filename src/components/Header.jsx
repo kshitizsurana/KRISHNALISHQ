@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Header.css';
 
 function Header({ scrollProgress }) {
@@ -12,6 +13,7 @@ function Header({ scrollProgress }) {
             setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll);
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -23,8 +25,21 @@ function Header({ scrollProgress }) {
         }
     };
 
+    const navItems = [
+        { id: 'couple', label: 'The Couple' },
+        { id: 'story', label: 'Our Story' },
+        { id: 'events', label: 'Events' },
+        { id: 'gallery', label: 'Photos' },
+        { id: 'rsvp', label: 'RSVP' }
+    ];
+
     return (
-        <header className={`header ${isScrolled ? 'scrolled' : ''} `}>
+        <motion.header
+            className={`header ${isScrolled ? 'scrolled' : ''} `}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+        >
             <div className="header-container">
                 <div className="header-logo">
                     <img src="/logo.png" alt="Ishika & Krishna" className="logo-img" />
@@ -37,11 +52,17 @@ function Header({ scrollProgress }) {
                     </div>
 
                     <nav className={`header-nav ${isMenuOpen ? 'mobile-open' : ''}`}>
-                        <button onClick={() => scrollToSection('couple')}>The Couple</button>
-                        <button onClick={() => scrollToSection('story')}>Our Story</button>
-                        <button onClick={() => scrollToSection('events')}>Events</button>
-                        <button onClick={() => scrollToSection('gallery')}>Photos</button>
-                        <button onClick={() => scrollToSection('rsvp')}>RSVP</button>
+                        {navItems.map((item, i) => (
+                            <motion.button
+                                key={item.id}
+                                onClick={() => scrollToSection(item.id)}
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 + (i * 0.1), duration: 0.5 }}
+                            >
+                                {item.label}
+                            </motion.button>
+                        ))}
                     </nav>
 
                     <button
@@ -55,7 +76,7 @@ function Header({ scrollProgress }) {
                     </button>
                 </div>
             </div>
-        </header>
+        </motion.header>
     );
 }
 

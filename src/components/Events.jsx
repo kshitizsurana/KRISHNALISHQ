@@ -1,4 +1,4 @@
-
+import { motion } from 'framer-motion';
 import './Events.css';
 
 function Events() {
@@ -49,21 +49,53 @@ function Events() {
         }
     ];
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.3
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: "easeOut" }
+        }
+    };
+
     return (
         <section className="events section" id="events">
             <div className="container">
-                <div className="section-header-styled">
-                    <span className="divider-line"></span>
+                <motion.div
+                    className="section-header-styled"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
+                    <img src="/logo.png" alt="Logo" className="section-logo" />
+                    <div className="divider-line"></div>
+                    <h2 className="section-title-serif">Events Schedule</h2>
+                    <div className="divider-line"></div>
                     <img src="/hashtag.png" alt="#KrishNaIshq" className="section-logo" />
-                    <h2 className="section-title-serif">WEDDING EVENTS</h2>
-                    <span className="divider-line"></span>
-                </div>
+                </motion.div>
 
-                <div className="events-grid">
+                <motion.div
+                    className="events-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                >
                     {events.map((event, index) => (
-                        <div key={index} className="event-card">
+                        <motion.div key={index} className="event-card" variants={cardVariants}>
                             <div className="event-image">
-                                <img src={event.image} alt={event.title} loading="lazy" />
+                                <img src={event.image} alt={event.title} />
                                 <div className="event-date-overlay">
                                     <span>{event.date}</span>
                                 </div>
@@ -95,9 +127,9 @@ function Events() {
                                     </span>
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

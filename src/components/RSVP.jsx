@@ -1,70 +1,98 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import './RSVP.css';
 
 function RSVP() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        guests: '1',
         message: ''
     });
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        alert('Thank you for confirming your presence! We look forward to seeing you.');
-        setFormData({ name: '', email: '', message: '' });
+        alert('Thank you for your RSVP!');
+        setFormData({ name: '', email: '', guests: '1', message: '' });
     };
 
     return (
         <section className="rsvp section" id="rsvp">
             <div className="container">
-                <div className="rsvp-wrapper">
-                    <h2 className="section-title">Confirmation at Marriage</h2>
-                    <p className="rsvp-subtitle">Please confirm your presence by filling out the form below</p>
+                <motion.div
+                    className="rsvp-card"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1 }}
+                >
+                    <div className="rsvp-header">
+                        <h2 className="section-title">RSVP</h2>
+                        <p className="rsvp-subtitle">Will you be attending?</p>
+                    </div>
 
                     <form className="rsvp-form" onSubmit={handleSubmit}>
-                        <div className="form-group">
+                        <motion.div
+                            className="form-group"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                        >
+                            <label htmlFor="name">Full Name</label>
                             <input
                                 type="text"
-                                name="name"
-                                placeholder="YOUR NAME"
+                                id="name"
                                 value={formData.name}
-                                onChange={handleChange}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 required
                             />
-                        </div>
+                        </motion.div>
 
-                        <div className="form-group">
+                        <motion.div
+                            className="form-group"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.3 }}
+                        >
+                            <label htmlFor="email">Email Address</label>
                             <input
                                 type="email"
-                                name="email"
-                                placeholder="YOUR EMAIL"
+                                id="email"
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 required
                             />
-                        </div>
+                        </motion.div>
 
-                        <div className="form-group">
+                        <motion.div
+                            className="form-group"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.4 }}
+                        >
+                            <label htmlFor="message">Message for the Couple</label>
                             <textarea
-                                name="message"
-                                placeholder="YOUR MESSAGE"
-                                value={formData.message}
-                                onChange={handleChange}
+                                id="message"
                                 rows="4"
+                                value={formData.message}
+                                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             ></textarea>
-                        </div>
+                        </motion.div>
 
-                        <button type="submit" className="submit-btn">SUBMIT</button>
+                        <motion.button
+                            type="submit"
+                            className="submit-btn"
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            Confirm Attendance
+                        </motion.button>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

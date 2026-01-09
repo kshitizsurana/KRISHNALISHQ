@@ -1,13 +1,14 @@
 .timeline {
-    background-color: #FFECF2;
-    /* Soft Pastel Pink - clearly visible */
-    padding: 6rem 0;
+    background-color: #FFF0F5;
+    /* Lavender Blush - even softer pink */
+    padding: 8rem 0;
     overflow: hidden;
     position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .circular-timeline-container {
@@ -152,15 +153,16 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 150px;
+    width: 180px;
+    /* Increased from 150px */
     pointer-events: auto;
     transition: transform 0.3s ease;
+    z-index: 5;
 }
 
 .orbit-item:hover {
-    z-index: 20;
-    /* Scale effect on hover not easily combined with complex transform, 
-     so we target children instead or use a wrapper if needed. */
+    z-index: 50;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--radius) * -1)) rotate(calc(var(--angle) * -1)) scale(1.1);
 }
 
 .orbit-number-box {

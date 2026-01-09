@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import './Footer.css';
 
 function Footer() {
@@ -29,44 +30,77 @@ function Footer() {
         return () => clearInterval(timer);
     }, []);
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 }
+    };
+
     return (
         <footer className="footer">
-            <div className="footer-image-overlay">
+            <motion.div
+                className="footer-image-overlay"
+                initial={{ scale: 1.1 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 3 }}
+            >
                 <img src="/hero_couple_image_1767951802311.png" alt="Couple" className="footer-bg" />
                 <div className="footer-overlay"></div>
-            </div>
+            </motion.div>
 
-            <div className="footer-content">
-                <h2 className="footer-names script-text">Ishika & Krishna</h2>
-                <p className="footer-message">We can't wait to celebrate with you</p>
+            <motion.div
+                className="footer-content"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={containerVariants}
+            >
+                <motion.h2 className="footer-names script-text" variants={itemVariants}>
+                    Ishika & Krishna
+                </motion.h2>
+                <motion.p className="footer-message" variants={itemVariants}>
+                    We can't wait to celebrate with you
+                </motion.p>
 
-                <div className="countdown-container">
-                    <p className="countdown-label">Missing Days to Wedding Timeline</p>
+                <motion.div className="countdown-container" variants={itemVariants}>
+                    <motion.p
+                        className="countdown-label"
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    >
+                        Missing Days to Wedding Timeline
+                    </motion.p>
                     <div className="countdown-timer">
-                        <div className="timer-item">
+                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
                             <span className="timer-value">{timeLeft.days}</span>
                             <span className="timer-label">Days</span>
-                        </div>
-                        <div className="timer-separator">:</div>
-                        <div className="timer-item">
+                        </motion.div>
+                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
                             <span className="timer-value">{timeLeft.hours}</span>
                             <span className="timer-label">Hours</span>
-                        </div>
-                        <div className="timer-separator">:</div>
-                        <div className="timer-item">
+                        </motion.div>
+                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
                             <span className="timer-value">{timeLeft.minutes}</span>
                             <span className="timer-label">Mins</span>
-                        </div>
-                        <div className="timer-separator">:</div>
-                        <div className="timer-item">
+                        </motion.div>
+                        <motion.div className="timer-item" whileHover={{ scale: 1.05 }}>
                             <span className="timer-value">{timeLeft.seconds}</span>
                             <span className="timer-label">Secs</span>
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
-                <p className="copyright">© 2026 Ishika Weds Krishna. All Rights Reserved.</p>
-            </div>
+                <motion.p className="copyright" variants={itemVariants}>
+                    © 2026 Ishika Weds Krishna. All Rights Reserved.
+                </motion.p>
+            </motion.div>
         </footer>
     );
 }

@@ -29,22 +29,20 @@
 }
 
 .story-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 3rem;
     align-items: center;
 }
 
-.story-item.left .story-content {
-    direction: ltr;
+.story-content>div {
+    flex: 1;
 }
 
 .story-item.right .story-content {
-    direction: rtl;
+    flex-direction: row-reverse;
 }
 
 .story-item.right .story-text {
-    direction: ltr;
     text-align: right;
 }
 
@@ -99,7 +97,7 @@
     }
 
     .story-content {
-        grid-template-columns: 1fr;
+        flex-direction: column !important;
         gap: 1.5rem;
     }
 
