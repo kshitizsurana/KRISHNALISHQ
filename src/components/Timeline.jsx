@@ -92,10 +92,7 @@ function Timeline() {
         <section className="timeline section" id="timeline" ref={containerRef}>
             <div className="full-width-timeline-wrapper">
                 <div className="section-header-styled">
-                    <img src="/logo.png" alt="Logo" className="section-logo" />
-                    <div className="divider-line"></div>
                     <h2 className="section-title-serif">Wedding Day</h2>
-                    <div className="divider-line"></div>
                     <span className="section-hashtag accent-text">#KrishNalIshq</span>
                 </div>
 
@@ -116,7 +113,7 @@ function Timeline() {
                     <div className="orbit-container">
                         {timelineEvents.map((item, index) => {
                             const angle = (index / timelineEvents.length) * 360;
-                            const radius = 270; // Even tighter for zero-space effect
+                            const radius = 280; // Optimized to keep all text safely inside screen bounds
                             return (
                                 <div
                                     key={item.id}

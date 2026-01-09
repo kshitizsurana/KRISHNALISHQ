@@ -14,9 +14,10 @@
     position: relative;
     width: 100%;
     max-width: 1400px;
-    height: 380px;
-    margin: -22rem auto -22rem;
-    /* Perfectly symmetrical pull for top and bottom */
+    height: 900px;
+    /* Increased height for better framing */
+    margin: 15rem auto 10rem;
+    /* Stable positive margins for clarity */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,9 +86,8 @@
     }
 
     100% {
-        transform: translate(-50%, -50%) scale(1.6);
-        /* Even smaller ripple radius */
-        /* Smaller max radius */
+        transform: translate(-50%, -50%) scale(4.5);
+        /* Much larger to cover the expanded width */
         opacity: 0;
         border-width: 0px;
     }
@@ -128,7 +128,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
     /* Restored some top breathing room from events */
     margin-bottom: 0px;
     width: 100%;
@@ -197,8 +197,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 200px;
-    /* Even wider for even bigger text */
+    width: 280px;
+    /* Reduced to sit fully within screen */
     pointer-events: auto;
     transition: transform 0.3s ease;
     z-index: 5;
@@ -212,17 +212,16 @@
 .orbit-number-box {
     background: #000;
     color: #fff;
-    width: 50px;
-    /* Even bigger */
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: var(--font-serif);
-    font-size: 1.4rem;
-    /* Much bigger */
+    font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 0.8rem;
+    /* Corrected from 5rem to keep text grouped */
 }
 
 .orbit-content {
@@ -233,112 +232,71 @@
 
 .orbit-title {
     font-family: var(--font-serif);
-    font-size: 1.8rem;
-    /* Massively bigger */
+    font-size: 2rem;
+    /* Scaled for a cleaner, non-overlapping look */
     font-weight: 700;
-    color: #1a1a1a;
+    color: #000;
     margin: 0;
     line-height: 1.1;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.orbit-time {
     font-family: var(--font-serif);
     font-size: 1.2rem;
-    /* Even bigger */
+    /* Proportionally adjusted */
     color: #000;
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
     font-weight: 500;
 }
 
 /* Responsive adjustments */
+@media (max-width: 1200px) {
+    .circular-timeline-container {
+        height: 1000px;
+        margin: -25rem auto -25rem;
+    }
+
+    .orbit-item {
+        width: 350px;
+    }
+
+    .orbit-title {
+        font-size: 2.22rem;
+    }
+}
+
 @media (max-width: 1024px) {
     .circular-timeline-container {
+        height: 800px;
+        margin: -15rem auto -15rem;
+    }
+
+    .orbit-item {
         width: 300px;
-        height: 300px;
-        margin-top: 2rem;
     }
 
-    .c1 {
-        width: 300px;
-        height: 300px;
-    }
-
-    .c2 {
-        width: 450px;
-        height: 450px;
-    }
-
-    .c3 {
-        width: 600px;
-        height: 600px;
-    }
-
-    .center-stage {
-        width: 180px;
-        height: 180px;
+    .orbit-title {
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
-    .section-header-styled {
-        flex-direction: column;
-        gap: 0.75rem;
-        margin-bottom: 1.5rem;
-        align-items: center;
-        width: 100%;
-        text-align: center;
-    }
-
-    .divider-line {
-        display: none;
-    }
-
-    .section-logo {
-        height: 32px;
-        opacity: 1;
-    }
-
-    .section-title-serif {
-        font-size: 1.35rem;
-        letter-spacing: 0.08em;
-    }
-
-    .circular-timeline-container {
-        position: relative;
-        transform: scale(0.5);
-        transform-origin: center center;
-        margin: 0;
-        height: 800px;
-        width: 800px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .timeline {
-        padding: 3rem 0;
-        justify-content: center;
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 4rem 0 !important;
     }
 
-    .container {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-    }
-}
-
-@media (max-width: 480px) {
     .circular-timeline-container {
-        transform: scale(0.45);
-        margin: 0;
+        height: 600px;
+        margin: -5rem auto -5rem;
+        transform: scale(0.6);
     }
 
-    .section-title-serif {
-        font-size: 1.2rem;
+    .orbit-item {
+        width: 220px;
+    }
+
+    .orbit-title {
+        font-size: 1.4rem;
     }
 }

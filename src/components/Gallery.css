@@ -4,8 +4,8 @@
 }
 
 .gallery .section-title {
-    margin-top: -10rem;
-    /* Perfectly matches the top section pull for symmetry */
+    margin-top: 2rem;
+    /* Changed from negative to positive for clear separation */
     margin-bottom: 2rem;
 }
 
