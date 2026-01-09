@@ -10,8 +10,11 @@ import Gallery from './components/Gallery';
 import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 
+import LoadingScreen from './components/LoadingScreen';
+
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,16 +29,20 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (loading) {
+    return <LoadingScreen onComplete={() => setLoading(false)} />;
+  }
+
   return (
     <div className="app">
       <Header scrollProgress={scrollProgress} />
       <Hero />
-      <Couple />
-      <OurStory />
-      <Events />
+      <div id="couple"><Couple /></div>
+      <div id="story"><OurStory /></div>
+      <div id="events"><Events /></div>
       <Timeline />
-      <Gallery />
-      <RSVP />
+      <div id="gallery"><Gallery /></div>
+      <div id="rsvp"><RSVP /></div>
       <Footer />
     </div>
   );

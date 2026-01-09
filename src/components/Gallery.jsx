@@ -10,7 +10,7 @@ function Gallery() {
         { src: '/story_proposal_1767951897199.png', span: 'col-1 row-2' },
         { src: '/bride_portrait_1767951817922.png', span: 'col-1 row-1' },
         { src: '/groom_portrait_1767951834123.png', span: 'col-2 row-1' },
-        { src: 'https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=800', span: 'col-1 row-1' },
+
         { src: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800', span: 'col-1 row-2' },
         { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', span: 'col-2 row-2' },
     ];
