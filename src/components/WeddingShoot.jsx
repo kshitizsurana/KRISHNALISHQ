@@ -51,9 +51,9 @@ const WeddingShoot = () => {
                         src="https://drive.google.com/file/d/1dC21vLBnttadMCFWFG1IDpJV9VqupNN8/preview"
                         width="100%"
                         height="100%"
-                        allow="autoplay"
+                        allow="autoplay; fullscreen"
                         allowFullScreen
-                        title="The Wedding Shoot"
+                        title="The Pre Wedding Shoot"
                         className="shoot-video"
                     ></iframe>
                 </div>
