@@ -45,7 +45,7 @@ const WeddingShoot = () => {
     return (
         <section className="wedding-shoot section" id="wedding-shoot" ref={sectionRef}>
             <div className="container">
-                <h2 className="section-title shoot-title">The Pre Wedding Shoot</h2>
+                <h2 className="section-title shoot-title">Soft launch of Forever</h2>
                 <div className="video-container">
                     <iframe
                         src="https://drive.google.com/file/d/1dC21vLBnttadMCFWFG1IDpJV9VqupNN8/preview"
