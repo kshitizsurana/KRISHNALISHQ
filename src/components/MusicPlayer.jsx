@@ -1,56 +1,46 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './MusicPlayer.css';
+import React, { useEffect, useRef } from 'react';
 import myWeddingSong from '../assets/myWeddingSong.mp3';
 
-// Using a placeholder wedding-appropriate song. 
-// NOTE: You must use a DIRECT link to an audio file (ending in .mp3, .wav, etc.)
-// Links to SoundCloud pages or YouTube videos will NOT work with this player.
-// To use a local file:
-// 1. Place your 'song.mp3' in the 'src/assets' folder
-// 2. Import it: import bgMusic from '../assets/song.mp3'
-// 3. Use it: const PLAYLIST_URL = bgMusic;
-
-const PLAYLIST_URL = myWeddingSong;
 const MusicPlayer = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
-    const audioRef = useRef(new Audio(PLAYLIST_URL));
-    const [hasInteracted, setHasInteracted] = useState(false);
+    const audioRef = useRef(null);
 
     useEffect(() => {
-        const audio = audioRef.current;
-        audio.loop = true;
-        audio.volume = 0.4; // Set a pleasant background volume
+        // We try to programmatically triggering play as well, 
+        // just in case the autoPlay attribute is ignored by some React reconciliations
+        if (audioRef.current) {
+            audioRef.current.volume = 0.5;
 
-        const playAudio = () => {
-            audio.play().then(() => {
-                setIsPlaying(true);
-                // Remove listeners once playing
-                document.removeEventListener('click', playAudio);
-                document.removeEventListener('touchstart', playAudio);
-                document.removeEventListener('keydown', playAudio);
-            }).catch(err => {
-                console.log("Autoplay blocked, waiting for interaction");
-            });
-        };
+            const playMusic = async () => {
+                try {
+                    await audioRef.current.play();
+                } catch (err) {
+                    console.log("Autoplay prevented by browser. Waiting for user interaction.");
+                    // Fallback: If immediate playback fails, we MUST listen for an interaction 
+                    // because browsers simply won't play audio otherwise. 
+                    // This "responds" to the screen only because it has to.
+                    const enableAudio = () => {
+                        audioRef.current.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                }
+            };
 
-        // Try to play immediately
-        playAudio();
-
-        // Add global listeners to catch the first interaction if blocked
-        document.addEventListener('click', playAudio);
-        document.addEventListener('touchstart', playAudio);
-        document.addEventListener('keydown', playAudio);
-
-        return () => {
-            audio.pause();
-            document.removeEventListener('click', playAudio);
-            document.removeEventListener('touchstart', playAudio);
-            document.removeEventListener('keydown', playAudio);
-        };
+            playMusic();
+        }
     }, []);
 
-    // Return null to render nothing (invisible player)
-    return null;
+    return (
+        <audio
+            ref={audioRef}
+            src={myWeddingSong}
+            autoPlay
+            loop
+            style={{ display: 'none' }}
+        />
+    );
 };
 
 export default MusicPlayer;
