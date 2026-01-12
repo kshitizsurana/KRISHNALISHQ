@@ -44,8 +44,7 @@ function Header({ scrollProgress }) {
         { id: 'couple', label: 'The Couple' },
         { id: 'story', label: 'Our Story' },
         { id: 'events', label: 'Events' },
-        { id: 'gallery', label: 'Photos' },
-        { id: 'videos', label: 'Pre Wedding' },
+        { id: 'gallery', label: 'Gallery' },
         { id: 'rsvp', label: 'RSVP' }
     ];
 

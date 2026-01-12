@@ -12,14 +12,14 @@ function Gallery() {
     const gridRef = useRef(null);
 
     const images = [
-        { src: '/new_romantic.jpg', layout: 'item-1' }, // Big Portrait (Left)
-        { src: '/gallery_smiling_close.jpg', layout: 'item-2' }, // Small (Top center-right)
-        { src: '/new_rings.jpg', layout: 'item-3' }, // Small (Top right)
-        { src: '/gallery_tennis_lying.jpg', layout: 'item-4' }, // Wide (Center right)
-        { src: '/gallery_bw_couch.jpg', layout: 'item-5' }, // Small (Lower left)
-        { src: '/gallery_sitting_lap.jpg', layout: 'item-6' }, // Small (Lower center-left)
-        { src: '/gallery_couch_looking.jpg', layout: 'item-7' }, // Sunset/Couch Portrait (Bottom left)
-        { src: '/new_laughing.jpg', layout: 'item-8' }, // Vertical (Tall Right)
+        { src: '/new_laughing.jpg', layout: 'item-1' }, // High energy / Happy start (Big Left)
+        { src: '/gallery_bw_couch.jpg', layout: 'item-2' }, // B&W contrast (Small Top)
+        { src: '/gallery_smiling_close.jpg', layout: 'item-3' }, // Intimate close-up (Small Top)
+        { src: '/gallery_tennis_lying.jpg', layout: 'item-4' }, // Playful wide shot (Wide Mid)
+        { src: '/new_rings.jpg', layout: 'item-5' }, // Details (Lower Left Square)
+        { src: '/gallery_sitting_lap.jpg', layout: 'item-6' }, // Connection (Lower Center Square)
+        { src: '/new_romantic.jpg', layout: 'item-7' }, // Classic Romance (Bottom Left)
+        { src: '/gallery_couch_looking.jpg', layout: 'item-8' }, // Cinematic Sunset (Tall Right)
     ];
 
     useEffect(() => {
