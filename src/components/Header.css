@@ -7,17 +7,16 @@
     background: transparent;
     transition: all 0.3s ease;
     padding: 1.5rem 0;
-    color: var(--color-text);
-    /* Always black/dark */
+    color: #ffffff;
+    /* White for high-end look on night hero */
 }
 
 .header.scrolled {
-    background: transparent;
-    /* Keep transparent even on scroll */
-    backdrop-filter: none;
-    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+    /* Very subtle tint */
+    backdrop-filter: blur(10px);
     padding: 1rem 0;
-    color: var(--color-text);
+    color: #ffffff;
 }
 
 .header-container {
@@ -40,12 +39,12 @@
     height: 70px;
     width: auto;
     transition: all 0.3s ease;
-    filter: brightness(0);
-    /* Black always */
+    filter: brightness(0) invert(1);
+    /* White for visibility on dark hero */
 }
 
 .header.scrolled .logo-img {
-    filter: brightness(0);
+    filter: brightness(0) invert(1);
 }
 
 .header-hashtag {
@@ -199,7 +198,7 @@
         justify-content: space-evenly;
         width: 100%;
         padding: 0.5rem 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .header-nav button {

@@ -12,14 +12,14 @@ function Gallery() {
     const gridRef = useRef(null);
 
     const images = [
-        { src: '/story_meeting_1767951851794.png', layout: 'item-1' }, // Big Portrait (Left)
-        { src: '/bride_portrait_1767951817922.png', layout: 'item-2' }, // Small (Top center-right)
-        { src: '/groom_portrait_1767951834123.png', layout: 'item-3' }, // Small (Top right)
-        { src: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?w=800', layout: 'item-4' }, // Mehndi Hands (Center right)
-        { src: '/story_date_1767951873660.png', layout: 'item-5' }, // Small (Lower left)
-        { src: '/story_proposal_1767951897199.png', layout: 'item-6' }, // Small (Lower center-left)
-        { src: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?w=800', layout: 'item-7' }, // Sunset Portrait (Bottom left)
-        { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800', layout: 'item-8' }, // Dog Close-up (Tall Right)
+        { src: '/new_romantic.jpg', layout: 'item-1' }, // Big Portrait (Left)
+        { src: '/gallery_smiling_close.jpg', layout: 'item-2' }, // Small (Top center-right)
+        { src: '/new_rings.jpg', layout: 'item-3' }, // Small (Top right)
+        { src: '/gallery_tennis_lying.jpg', layout: 'item-4' }, // Wide (Center right)
+        { src: '/gallery_bw_couch.jpg', layout: 'item-5' }, // Small (Lower left)
+        { src: '/gallery_sitting_lap.jpg', layout: 'item-6' }, // Small (Lower center-left)
+        { src: '/gallery_couch_looking.jpg', layout: 'item-7' }, // Sunset/Couch Portrait (Bottom left)
+        { src: '/new_laughing.jpg', layout: 'item-8' }, // Vertical (Tall Right)
     ];
 
     useEffect(() => {

@@ -106,7 +106,7 @@ function Timeline() {
 
                     <div className="center-stage">
                         <div className="center-image-wrapper">
-                            <img src="/bride_portrait_1767951817922.png" alt="Couple" className="center-img" />
+                            <img src="/gallery_stairs_close_laugh.jpg" alt="Couple" className="center-img" />
                         </div>
                     </div>
 

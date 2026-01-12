@@ -64,7 +64,8 @@
 
 .event-image {
     width: 100%;
-    height: 350px;
+    height: 480px;
+    /* Increased height to show full figures */
     overflow: hidden;
     position: relative;
     border-radius: 12px 12px 0 0;
@@ -76,6 +77,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
+    /* Shift view slightly up to catch heads while showing more of the body */
     transition: transform 0.8s ease;
 }
 
@@ -228,7 +231,12 @@
     }
 
     .event-image {
-        height: 250px;
+        height: 350px;
+    }
+
+    .event-image img {
+        object-position: center 85%;
+        /* Shifting the focus to the lower half of the image */
     }
 
     .event-content {

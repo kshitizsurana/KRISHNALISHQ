@@ -84,7 +84,7 @@ function Couple() {
                         ref={el => cardsRef.current[0] = el}
                     >
                         <div className="couple-image-wrapper">
-                            <img src="/bride_portrait_1767951817922.png" alt="Ishika Rajoria" className="couple-image" />
+                            <img src="/bride_portrait_new.jpg" alt="Ishika Rajoria" className="couple-image" />
                         </div>
                         <h3 className="couple-name script-text">Ishika Rajoria</h3>
                         <p className="couple-description">
@@ -98,7 +98,7 @@ function Couple() {
                         ref={el => cardsRef.current[1] = el}
                     >
                         <div className="couple-image-wrapper">
-                            <img src="/groom_portrait_1767951834123.png" alt="Krishna Akar" className="couple-image" />
+                            <img src="/groom_portrait_new.jpg" alt="Krishna Akar" className="couple-image" />
                         </div>
                         <h3 className="couple-name script-text">Krishna Akar</h3>
                         <p className="couple-description">

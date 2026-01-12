@@ -16,7 +16,7 @@ function Events() {
             tagline: '“Dive into love & laughter”',
             description: 'A splashy start with games, colours, and carnival vibes.',
             dressCode: 'Pastel hues, men and women both in western attire',
-            image: '/event_under_the_sea.jpg',
+            image: '/gallery_doorway_sunglasses.jpg',
             mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
@@ -27,7 +27,7 @@ function Events() {
             tagline: '“Dance like no one’s watching”',
             description: 'An evening of music, moves, and Bollywood magic.',
             dressCode: 'Glitz and glam, men in black tuxedo and women in white/beige/silver shimmer attire',
-            image: '/event_sangeet.jpg',
+            image: '/gallery_garden_twirl.jpg',
             mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
@@ -38,7 +38,7 @@ function Events() {
             tagline: '“Eternal Seven Vows”',
             description: 'Sacred fire, eternal promises, and hearts intertwined.',
             dressCode: 'Traditional, men in kurta pajama with jacket and women in silk saree or lehnga for our pure mandir',
-            image: '/event_wedding.jpg',
+            image: '/gallery_stairs_bride.jpg',
             mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
         {
@@ -49,7 +49,7 @@ function Events() {
             tagline: '“Two families, one grand celebration”',
             description: 'A majestic finale filled with love, laughter, and family blessings.',
             dressCode: 'Indian traditional, men in jodhpuri, achkan, bandgala and suit and women in lehnga and saree.',
-            image: '/event_reception.jpg',
+            image: '/gallery_stairs_sitting.jpg',
             mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         }
     ];

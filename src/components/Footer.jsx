@@ -73,7 +73,7 @@ function Footer() {
     return (
         <footer className="footer" ref={footerRef}>
             <div className="footer-image-overlay">
-                <img src="/hero_couple_image_1767951802311.png" alt="Couple" className="footer-bg" />
+                <img src="/gallery_walking_garden.jpg" alt="Couple" className="footer-bg" />
                 <div className="footer-overlay"></div>
             </div>
 
