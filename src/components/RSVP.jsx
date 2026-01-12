@@ -88,7 +88,7 @@ function RSVP() {
                         <span className="rsvp-ornament">✧</span>
                         <h2 className="rsvp-main-title">Confirmation At Wedding</h2>
                         <p className="rsvp-subtitle">
-                            It would be our greatest honor to have you with us as we begin our new journey. Please kindly confirm your presence below.
+                            It would be our greatest honour to have you with us, as we begin our new journey. Kindly confirm your presence below:
                         </p>
                     </div>
 
