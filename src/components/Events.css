@@ -45,25 +45,31 @@
 
 .event-card {
     background: var(--color-white);
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 12px;
+    /* Softened radius */
+    overflow: visible;
+    /* Changed from hidden to visible for 3D pop-out */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.1s ease-out, box-shadow 0.4s ease;
+    /* Fast transform for tilt */
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
 }
 
 .event-image {
     width: 100%;
     height: 350px;
-    /* Tall, prominent image */
     overflow: hidden;
     position: relative;
+    border-radius: 12px 12px 0 0;
+    transform: translateZ(20px);
+    /* Pop out */
 }
 
 .event-image img {
@@ -74,7 +80,7 @@
 }
 
 .event-card:hover .event-image img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .event-content {
@@ -84,6 +90,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    background: var(--color-white);
+    /* Ensure background is solid */
+    border-radius: 0 0 12px 12px;
+    transform: translateZ(30px);
+    /* Pop out more */
 }
 
 /* Cleaned up redundant rules */

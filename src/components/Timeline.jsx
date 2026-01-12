@@ -128,6 +128,7 @@ function Timeline() {
                                     </div>
                                     <div className="orbit-content">
                                         <h3 className="orbit-title">{item.event}</h3>
+                                        <p className="orbit-date">{item.desc}</p>
                                         <p className="orbit-time">{item.time}</p>
                                     </div>
                                 </div>

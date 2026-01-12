@@ -56,6 +56,51 @@ function Events() {
 
     const sectionRef = useRef(null);
     const gridRef = useRef(null);
+    const cardRefs = useRef([]);
+
+    const handleMouseMove = (e, index) => {
+        const card = cardRefs.current[index];
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate rotation based on cursor position relative to center
+        // Toning down the rotation for a more subtle, premium feel
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            scale: 1.02,
+            duration: 0.3,
+            ease: "power2.out",
+            overwrite: "auto"
+        });
+    };
+
+    const handleMouseLeave = (index) => {
+        const card = cardRefs.current[index];
+        if (!card) return;
+
+        gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.5)",
+            overwrite: "auto"
+        });
+    };
+
+    const handleMouseEnter = (index) => {
+        // Optional: Prepare card for interaction
+    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -98,17 +143,7 @@ function Events() {
                 }
             );
 
-            // Floating animation for cards after they appear
-            gsap.utils.toArray(".event-card").forEach((card, i) => {
-                gsap.to(card, {
-                    y: "-15px",
-                    duration: 2 + Math.random(),
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut",
-                    delay: i * 0.5
-                });
-            });
+            // Floating animation REMOVED in favor of interactive tilt
         }, sectionRef);
 
         return () => ctx.revert();
@@ -125,9 +160,16 @@ function Events() {
                     <span className="section-hashtag accent-text">#KrishNalIshq</span>
                 </div>
 
-                <div className="events-grid" ref={gridRef} style={{ perspective: "1500px" }}>
+                <div className="events-grid" ref={gridRef} style={{ perspective: "2000px" }}>
                     {events.map((event, index) => (
-                        <div key={index} className="event-card">
+                        <div
+                            key={index}
+                            className="event-card"
+                            ref={el => cardRefs.current[index] = el}
+                            onMouseMove={(e) => handleMouseMove(e, index)}
+                            onMouseLeave={() => handleMouseLeave(index)}
+                            onMouseEnter={() => handleMouseEnter(index)}
+                        >
                             <div className="event-image">
                                 <img src={event.image} alt={event.title} />
                                 <div className="event-date-overlay">

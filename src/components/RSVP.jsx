@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './RSVP.css';
 
+import emailjs from '@emailjs/browser';
+
 function RSVP() {
     const [formData, setFormData] = useState({
         name: '',
@@ -10,12 +12,37 @@ function RSVP() {
         guests: '1',
         message: ''
     });
+    const [status, setStatus] = useState(''); // '', 'sending', 'success', 'error'
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Thank you for your RSVP!');
-        setFormData({ name: '', email: '', guests: '1', message: '' });
+        setStatus('sending');
+
+        // REPLACE THESE WITH YOUR ACTUAL EMAILJS KEYS
+        // Sign up at https://www.emailjs.com/
+        const SERVICE_ID = 'service_fyk3h1r';
+        const TEMPLATE_ID = 'template_tgah0fn';
+        const PUBLIC_KEY = 'DIQsIQ1MLrDerUspQ';
+
+        const templateParams = {
+            from_name: formData.name,
+            from_email: formData.email,
+            guests: formData.guests,
+            message: formData.message,
+            to_name: 'Ishika & Krishna'
+        };
+
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                setStatus('success');
+                setFormData({ name: '', email: '', guests: '1', message: '' });
+                // Reset success message after 5 seconds
+                setTimeout(() => setStatus(''), 5000);
+            }, (error) => {
+                console.log('FAILED...', error);
+                setStatus('error');
+            });
     };
 
     const sectionRef = useRef(null);
@@ -101,9 +128,22 @@ function RSVP() {
                         <button
                             type="submit"
                             className="submit-btn"
+                            disabled={status === 'sending' || status === 'success'}
                         >
-                            SUBMIT
+                            {status === 'sending' ? 'SENDING...' : status === 'success' ? 'SENT WITH LOVE' : 'CONFIRM PRESENCE'}
                         </button>
+
+                        {status === 'success' && (
+                            <div className="status-message success">
+                                Thank you! We can't wait to see you there.
+                            </div>
+                        )}
+
+                        {status === 'error' && (
+                            <div className="status-message error">
+                                Oops! Something went wrong. Please try again or email us directly.
+                            </div>
+                        )}
                     </form>
                 </div>
             </div>
