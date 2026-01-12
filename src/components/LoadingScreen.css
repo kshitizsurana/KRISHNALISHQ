@@ -35,8 +35,8 @@
     position: relative;
     z-index: 10;
     font-family: var(--font-script) !important;
-    font-size: clamp(4rem, 15vw, 7.5rem) !important;
-    /* Significantly larger */
+    font-size: clamp(3rem, 10vw, 5rem) !important;
+    /* Slightly smaller to fit button */
     color: var(--color-primary);
     text-align: center;
     margin: 0;
@@ -52,14 +52,17 @@
     align-items: center;
     width: 100%;
     position: relative;
-    padding: 0 5vw;
+    padding: 10px 0;
+    min-height: 0;
+    /* Important for flex-shrink */
 }
 
 .final-collage-img {
-    width: 100%;
-    height: auto;
-    max-height: 85vh;
-    /* Increased vertical presence */
+    width: auto;
+    height: 100%;
+    max-width: 95vw;
+    max-height: 60vh;
+    /* Reduced to guarantee button visibility */
     object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -98,8 +101,9 @@
     }
 
     .final-collage-img {
-        max-height: 75vh;
+        max-height: 55vh;
         width: 100%;
+        object-fit: contain;
     }
 
     .welcome-top-text {

@@ -121,13 +121,13 @@ function OurStory() {
             title: 'First Meeting',
             date: '16 July 2025, The Lalit, Jaipur',
             description: `Their parents played cupid. She walked in a little nervous, he was calm. They spoke softly, laughed a little, and found comfort in the quiet pauses. Somehow, it felt right, he felt steady and familiar, she felt at home. (Soft note: one day before meeting him, she had spotted someone like him at her favourite café and got slightly ticked off, so she decided to meet him tomorrow and "say no" 😄)`,
-            image: '/new_tennis.jpg'
+            image: '/first_meeting_new.jpg'
         },
         {
             title: 'First Date',
             date: 'The Verandah, Rambagh Palace',
             description: `She suggested, 'Let's go to Verandah.' He smiled, confident he knew Jaipur like the back of his hand, yet somehow, he didn't have the faintest idea where she meant. When she added, 'Rambagh?' he laughed and said, 'Ah, of course, let's go.' He reached a little early, brimming with curiosity, and she kept him waiting forty minutes. He pretended to be annoyed, grumbling under his breath, but every sigh hid a little smile, he was happy just being there, waiting for her. At that charming place, the world seemed to fade away. Over almond coffee and sparkling water, they talked endlessly, about people, places, food, travel, eight hours passing as if in a heartbeat. No hurry, no agenda, just them. Yet in those quiet, effortless hours, something gentle and unforgettable quietly began.`,
-            image: '/new_romantic.jpg'
+            image: '/first_date_new.jpg'
         },
         {
             title: 'Engagement',
