@@ -25,6 +25,35 @@
     border: none;
 }
 
+
+.video-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.fullscreen-btn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(184, 150, 125, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fullscreen-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(184, 150, 125, 0.3);
+    opacity: 0.95;
+}
+
 @media (max-width: 768px) {
     .wedding-shoot {
         padding: var(--section-padding-mobile) 0;
@@ -36,5 +65,18 @@
         /* Takes full width of the 'container', matching all other sections */
         max-width: none;
         aspect-ratio: 16 / 9;
+    }
+
+    .fullscreen-btn {
+        padding: 10px 25px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        width: 92%;
+        /* Slightly tighter margins for very small screens */
+        border-radius: 6px;
     }
 }

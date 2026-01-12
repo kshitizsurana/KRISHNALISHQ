@@ -59,6 +59,16 @@ const WeddingShoot = () => {
                         className="shoot-video"
                     ></iframe>
                 </div>
+                <div className="video-controls">
+                    <a
+                        href="https://drive.google.com/file/d/1dC21vLBnttadMCFWFG1IDpJV9VqupNN8/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="fullscreen-btn"
+                    >
+                        WATCH FULL SCREEN
+                    </a>
+                </div>
             </div>
         </section>
     );
