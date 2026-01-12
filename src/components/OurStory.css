@@ -129,15 +129,16 @@
     }
 
     .story-image-wrapper {
-        height: 60vh;
-        /* Increased for vertical shots */
+        height: 50vh;
         width: 100%;
-        background: white;
-        /* Clean backdrop for 'contain' fit */
+        background: transparent;
+        border-radius: 8px;
+        /* Elegant rounded corners with margin */
     }
 
     .story-image {
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center 25%;
     }
 
     .story-title {
