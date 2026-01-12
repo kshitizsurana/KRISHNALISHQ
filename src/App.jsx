@@ -11,6 +11,7 @@ import Events from './components/Events';
 import Timeline from './components/Timeline';
 import Gallery from './components/Gallery';
 import RSVP from './components/RSVP';
+import WeddingShoot from './components/WeddingShoot';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import IntroGallery from './components/IntroGallery';
@@ -102,6 +103,7 @@ function App() {
       <div id="events"><Events /></div>
       <Timeline />
       <div id="gallery"><Gallery /></div>
+      <WeddingShoot />
       <div id="rsvp"><RSVP /></div>
       <Footer />
       <MusicPlayer />
