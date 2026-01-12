@@ -14,6 +14,7 @@ import RSVP from './components/RSVP';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import IntroGallery from './components/IntroGallery';
+import MusicPlayer from './components/MusicPlayer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,6 +104,7 @@ function App() {
       <div id="gallery"><Gallery /></div>
       <div id="rsvp"><RSVP /></div>
       <Footer />
+      <MusicPlayer />
     </div>
   );
 }

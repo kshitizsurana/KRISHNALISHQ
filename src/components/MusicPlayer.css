@@ -1,0 +1,149 @@
+.music-player-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.music-toggle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.music-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.music-icon-wrapper {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Vinyl/Disc Styling */
+.vinyl-grooves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background:
+        radial-gradient(transparent 40%, rgba(184, 150, 125, 0.1) 41%, transparent 42%),
+        radial-gradient(transparent 50%, rgba(184, 150, 125, 0.1) 51%, transparent 52%),
+        radial-gradient(transparent 60%, rgba(184, 150, 125, 0.1) 61%, transparent 62%);
+    opacity: 0.6;
+}
+
+.music-player-container.playing .music-toggle-btn {
+    /* Continuous spin animation for the whole button might be dizzying, 
+     let's spin the grooves or just pulse. 
+     Actually, a slow spin is elegant for details. */
+    animation: pulse-border 2s infinite;
+}
+
+.music-player-container.playing .vinyl-grooves {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse-border {
+    0% {
+        box-shadow: 0 0 0 0 rgba(184, 150, 125, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(184, 150, 125, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(184, 150, 125, 0);
+    }
+}
+
+.click-hint {
+    background: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--color-primary);
+    opacity: 0;
+    transform: translateX(-10px);
+    pointer-events: none;
+    animation: fade-in-out 4s forwards;
+    animation-delay: 1s;
+    white-space: nowrap;
+}
+
+@keyframes fade-in-out {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .music-player-container {
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    .music-toggle-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .music-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
