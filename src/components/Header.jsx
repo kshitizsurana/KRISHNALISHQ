@@ -45,6 +45,7 @@ function Header({ scrollProgress }) {
         { id: 'story', label: 'Our Story' },
         { id: 'events', label: 'Events' },
         { id: 'gallery', label: 'Photos' },
+        { id: 'videos', label: 'Pre Wedding' },
         { id: 'rsvp', label: 'RSVP' }
     ];
 
