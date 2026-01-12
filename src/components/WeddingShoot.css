@@ -72,11 +72,3 @@
         font-size: 0.8rem;
     }
 }
-
-@media (max-width: 480px) {
-    .video-container {
-        width: 92%;
-        /* Slightly tighter margins for very small screens */
-        border-radius: 6px;
-    }
-}
