@@ -37,7 +37,7 @@ function Events() {
             venue: 'Amphitheater Lawn, Taj Aravali, Udaipur',
             tagline: '“Eternal Seven Vows”',
             description: 'Sacred fire, eternal promises, and hearts intertwined.',
-            dressCode: 'Traditional, men in kurta pajama with jacket and women in silk saree or lehnga for our pure mandir',
+            dressCode: 'Traditional, men in kurta pajama with jacket and women in silk saree or lehnga for our pure mandir look',
             image: '/gallery_stairs_bride.jpg',
             mapLink: 'https://maps.app.goo.gl/mDgtNPm9NzrDULzv7?g_st=iw'
         },
